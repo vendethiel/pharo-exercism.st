@@ -1,47 +1,31 @@
 "
-This is pretty starightforward once you spot how Pharo handles a while loop.
+RomanNumerals helps compute roman numerals
 "
 Class {
-	#name : #RomanNumerals,
-	#superclass : #Object,
-	#classVars : [
-		'NumeralsTable'
-	],
-	#category : #'Exercise@RomanNumerals'
+	#name : 'RomanNumerals',
+	#superclass : 'Object',
+	#category : 'Exercise@RomanNumerals',
+	#package : 'Exercise@RomanNumerals'
 }
 
-{ #category : #constants }
-RomanNumerals class >> numeralsTable [
-	"Answer a table of arabic to roman numeral conversions."
-	
-	^ NumeralsTable
-		ifNil: [ 
-			NumeralsTable := {
-			(1000 -> 'M').
-			(900 -> 'CM').
-			(500 -> 'D').
-			(400 -> 'CD').
-			(100 -> 'C').
-			(90 -> 'XC').
-			(50 -> 'L').
-			(40 -> 'XL').
-			(10 -> 'X').
-			(9 -> 'IX').
-			(5 -> 'V').
-			(4 -> 'IV').
-			(1 -> 'I')} asOrderedDictionary ]
-]
-
-{ #category : #exercism }
-RomanNumerals >> romanNumber: anInteger [
-	| number |
-	
-	number := anInteger.
-	
-	^ String
-		streamContents: [ :s | 	
-			self class numeralsTable keysAndValuesDo: [ :arabic :roman | 
-				[ number >= arabic ] whileTrue: [ 
-						s << roman.
-						number := number - arabic ] ] ]
+{ #category : 'numeric' }
+RomanNumerals >> romanNumber: n [
+	 "Computes the roman number"
+    |num|
+    num := RomanNumber from: n.
+	 num
+        change: 1000 to: 'M';
+        change: 900 to: 'CM';
+        change: 500 to: 'D';
+        change: 400 to: 'CD';
+        change: 100 to: 'C';
+        change: 90 to: 'XC';
+        change: 50 to: 'L';
+        change: 40 to: 'XL';
+        change: 10 to: 'X';
+        change: 9 to: 'IX';
+        change: 5 to: 'V';
+        change: 4 to: 'IV';
+        change: 1 to: 'I'.
+    ^ num value.
 ]

@@ -1,7 +1,7 @@
-Extension { #name : #RPackage }
+Extension { #name : 'Package' }
 
-{ #category : #'*ExercismTools' }
-RPackage >> exPrintOutExtensionsFor: aClass on: aWriteStream [
+{ #category : '*ExercismTools' }
+Package >> exPrintOutExtensionsFor: aClass on: aWriteStream [
 
 	| selectors |
 	(selectors := self extensionSelectorsForClass: aClass) ifEmpty: [  ^self ].
@@ -16,18 +16,18 @@ RPackage >> exPrintOutExtensionsFor: aClass on: aWriteStream [
 		aClass exPrintOutMethod: sel on: aWriteStream ]
 ]
 
-{ #category : #'*ExercismTools' }
-RPackage >> exerciseName [
+{ #category : '*ExercismTools' }
+Package >> exerciseName [
 	^ (self name allRegexMatches: '\w+') last
 ]
 
-{ #category : #'*ExercismTools' }
-RPackage >> root [
+{ #category : '*ExercismTools' }
+Package >> root [
 	^self
 ]
 
-{ #category : #'*ExercismTools' }
-RPackage >> snapshot [
+{ #category : '*ExercismTools' }
+Package >> snapshot [
 	| pkgSnapshot extensions |
 	pkgSnapshot := (MCPackage named: self name) snapshot.
 	

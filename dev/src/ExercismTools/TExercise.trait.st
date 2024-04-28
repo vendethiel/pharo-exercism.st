@@ -29,7 +29,7 @@ method.
 Must answer the configured exercise meta data for this exercise, an `ExercismExercise`.
 "
 Trait {
-	#name : #TExercise,
+	#name : 'TExercise',
 	#classInstVars : [
 		'solutionId',
 		'customData',
@@ -38,10 +38,12 @@ Trait {
 		'version',
 		'aliasesAndHints'
 	],
-	#category : #'ExercismTools-Core'
+	#category : 'ExercismTools-Core',
+	#package : 'ExercismTools',
+	#tag : 'Core'
 }
 
-{ #category : #helper }
+{ #category : 'helper' }
 TExercise classSide >> createExerciseAfter: anotherTestCase [
 	"Helper method to create an exercise meta data object"
 	
@@ -53,55 +55,55 @@ TExercise classSide >> createExerciseAfter: anotherTestCase [
 		yourself 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> customData [
 
 	^ customData
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> exercise [
 
 	^ self configuredExerciseMetadata
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 TExercise classSide >> generator [
 
 	^ aliasesAndHints
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> isActive [
 
 	^ isActive
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> isCustom [
 
 	^ customData notEmpty 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TExercise classSide >> solutionId [ 
 
 	^ solutionId ifNil: [ ExSolutionIdError signal: 'Missing exercise solutionId' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TExercise classSide >> solutionId: anObject [
 
 	solutionId := anObject 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> uuid [
 
 	^ uuid
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TExercise classSide >> version [
 
 	^ version

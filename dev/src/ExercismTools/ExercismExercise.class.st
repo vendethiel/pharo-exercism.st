@@ -4,8 +4,8 @@ I am the meta data for an exercise, and am typically created from the #excerise 
 Of note is that the exercise submission id is stored as a class instance variable on ExercismTest.
 "
 Class {
-	#name : #ExercismExercise,
-	#superclass : #Object,
+	#name : 'ExercismExercise',
+	#superclass : 'Object',
 	#instVars : [
 		'testCase',
 		'difficulty',
@@ -15,17 +15,19 @@ Class {
 		'unlockedBy',
 		'isDeprecated'
 	],
-	#category : #'ExercismTools-Meta'
+	#category : 'ExercismTools-Meta',
+	#package : 'ExercismTools',
+	#tag : 'Meta'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> allExercises [
 	^ ExercismTest allSubclasses
 		select: [ :class | class class includesSelector: #exercise ]
 		thenCollect: [ :class | class exercise ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> bonusExercises [
 	"self bonusExercises"
 
@@ -35,13 +37,13 @@ ExercismExercise class >> bonusExercises [
 		asSortedCollection: [ :a :b | a name < b name ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> coreExercises [
 	^(self allExercises select: [:e | e isCore and: [e isActive]])
 		asSortedCollection: [ :a :b | a isFirst or: [a isFollowedBy: b ]]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> exerciseNameFrom: packageOrTag [
 	"Answer the name of the exercise given its storage RPackage or tag"	
 		
@@ -49,7 +51,7 @@ ExercismExercise class >> exerciseNameFrom: packageOrTag [
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> find: exercismName ifAbsent: aBlock [
 	| kebabedName |
 
@@ -59,14 +61,14 @@ ExercismExercise class >> find: exercismName ifAbsent: aBlock [
 		ifNone: [ aBlock cull: exercismName ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ExercismExercise class >> for: anExercismTestCase [
 	^self new
 		testCase: anExercismTestCase;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ExercismExercise >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -77,7 +79,7 @@ ExercismExercise >> = anObject [
 	^ self uuid = anObject uuid
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 ExercismExercise >> asJsonData [
 	"Answer a collection of attributes"
 	
@@ -90,7 +92,7 @@ ExercismExercise >> asJsonData [
 		'topics' -> self topics } asOrderedDictionary 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> descriptionText [
 	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
 
@@ -102,17 +104,17 @@ ExercismExercise >> descriptionText [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> difficulty [
 	^ difficulty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> difficulty: anInteger [
 	difficulty := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> exerciseClass [
 	"Answer the main solution class, by convention this is the name of the exercise"
 	
@@ -122,17 +124,17 @@ ExercismExercise >> exerciseClass [
 			[ :test | Smalltalk classNamed: self exerciseClassName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> exerciseClassName [ 
 	^self testCase name withoutSuffix: 'Test'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> exercisePackage [
 	^self testCase package
 ]
 
-{ #category : #internal }
+{ #category : 'internal' }
 ExercismExercise >> exercisePackageContainer [
 	"Answer the package or legacy tag, that containts the exercise - must conform to #classes, #snapshot protocols"
 	
@@ -143,13 +145,13 @@ ExercismExercise >> exercisePackageContainer [
 		ifFalse: [ pkg ]
 ]
 
-{ #category : #navigating }
+{ #category : 'navigating' }
 ExercismExercise >> followedBy [
 "testcase : ^self unlockedBy ifNil: ['' ] ifNotNil: [ :parent | parent followedBy ]"
 	^ self class coreExercises detect: [ :ex | ex isUnlockedBy: self ] ifNone: [  nil ]
 ]
 
-{ #category : #'gt-inspector' }
+{ #category : 'gt-inspector' }
 ExercismExercise >> gtInspectorDetailsIn: composite [
 	<gtInspectorPresentationOrder: 30>
 	^ composite table
@@ -172,19 +174,19 @@ ExercismExercise >> gtInspectorDetailsIn: composite [
 		send: #value
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ExercismExercise >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ self class hash bitXor: self uuid hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> hintMarker [
 	^ '## Hint'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> hintText [
 	"Answer the String, that is the hint text for exerciems (this is the text afer the markdown heading ## Hint"
 
@@ -199,12 +201,12 @@ ExercismExercise >> hintText [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> id [ 
 	^self name
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ExercismExercise >> initialize [
 	super initialize.
 	self
@@ -214,57 +216,57 @@ ExercismExercise >> initialize [
 		topics: #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isActive [
 	^self testCase isActive 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isAutoApproved [
 	^ isAutoApproved
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isAutoApproved: anObject [
 	isAutoApproved := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isCore [
 	^ isCore
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isCore: aBoolean [
 	isCore := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isDefined [
 	^self exerciseClass notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isDeprecated [
 	^ isDeprecated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isDeprecated: anObject [
 	isDeprecated := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> isEmpty [
 	^self solutionClasses isEmpty
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ExercismExercise >> isFirst [
 	^ self unlockedBy isNil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ExercismExercise >> isFollowedBy: anExercismExercise [
 
 	self isFirst ifTrue: [ ^ self ~= anExercismExercise ].
@@ -275,19 +277,19 @@ ExercismExercise >> isFollowedBy: anExercismExercise [
 		ifFalse: [ self isFollowedBy: anExercismExercise unlockedBy ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ExercismExercise >> isUnlockedBy: anExercise [
 	^ self unlockedBy
 		ifNil: [ false ]
 		ifNotNil: [ :exercise | exercise = anExercise ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> name [ 
 	^self exerciseClassName asKebabCase 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 ExercismExercise >> printOn: aStream [
 	
 	aStream
@@ -303,33 +305,33 @@ ExercismExercise >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 ExercismExercise >> removeSolutionClasses [
 	"Solution classes with implemented solution to be removed - utilized by TestRunner before importing student solution"
 	
 	^self solutionClasses do: [:solutionClass | solutionClass  removeFromSystem]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> snapshot [
 	"Answer the MCSnapshot for the exercise"
 	
 	^self exercisePackageContainer snapshot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> solutionClasses [
 	"Answer the classes that are submitted to Exercism"
 	
 	^self exercisePackageContainer classes reject: [ :c | c isKindOf: ExercismTest class ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> solutionId [
 	^self testCase solutionId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> solutionSources [
 	"Answer a Dictionary of filename to source code mappings for the solution that will be saved on Exercism. Exercism web interface displays files in order of upload."
 	
@@ -360,37 +362,37 @@ ExercismExercise >> solutionSources [
 
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 ExercismExercise >> storeSolutionId: anId [
 	^self testCase solutionId: anId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> testCase [
 	^ testCase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> testCase: anExercismTest [
 	testCase := anExercismTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> topics [
 	^ topics
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> topics: aStringArray [
 	topics := aStringArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> trackId [
 	^ExercismManager trackId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> unlockReference [
 	"Answer the String unlock reference for a non-core exercise, otherwise nil"
 
@@ -399,37 +401,37 @@ ExercismExercise >> unlockReference [
 		ifFalse: [ self unlockedBy ifNotNil: [:parent | parent name ]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> unlockedBy [
 	^ unlockedBy 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> unlockedBy: anExercismExercise [
 	unlockedBy := anExercismExercise
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> unlockedExercises [
 	^self class bonusExercises select: [ :e | e isUnlockedBy: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> uuid [
 	^self testCase uuid
 ]
 
-{ #category : #verifying }
+{ #category : 'verifying' }
 ExercismExercise >> verifySolutionForSubmission [
 	<todo>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> version [
 	^self testCase version
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ExercismExercise >> wordifiedName [
 	"Answer the english readable name of the exercise"
 
