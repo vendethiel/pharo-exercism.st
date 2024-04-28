@@ -34,20 +34,19 @@ score is 257, your program should only report the eggs (1) allergy.
 
 Notice how each of the items is a power of 2, a property that you should be able to leverage.
 
-Check out the 'bit manipulation' protocol of class Integer. 
-
 
 "
 Class {
-	#name : #AllergiesTest,
-	#superclass : #ExercismTest,
+	#name : 'AllergiesTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'allergiesCalculator'
 	],
-	#category : #'Exercise@Allergies'
+	#category : 'Exercise@Allergies',
+	#package : 'Exercise@Allergies'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AllergiesTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -58,7 +57,7 @@ AllergiesTest class >> exercise [
 		yourself
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 AllergiesTest class >> generator [
 	"Potential generator hints"
 	
@@ -66,25 +65,25 @@ AllergiesTest class >> generator [
 	('@listScore:' -> #'allergyListForScore:')}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AllergiesTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'49ae8e78-a641-0d00-ba20-5f9f04641ab1'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AllergiesTest class >> version [
 	"Generated from specification: 1 April 2019"
 	^'1.2.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AllergiesTest >> setUp [
 	super setUp.
 	allergiesCalculator := Allergies new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test01_NoAllergiesMeansNotAllergicToPeanuts [
 	| result |
 
@@ -92,7 +91,7 @@ AllergiesTest >> test01_NoAllergiesMeansNotAllergicToPeanuts [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test02_NoAllergiesMeansNotAllergicToCats [
 	| result |
 
@@ -100,7 +99,7 @@ AllergiesTest >> test02_NoAllergiesMeansNotAllergicToCats [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test03_NoAllergiesMeansNotAllergicToStrawberries [
 	| result |
 
@@ -108,7 +107,7 @@ AllergiesTest >> test03_NoAllergiesMeansNotAllergicToStrawberries [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test04_AllergicToOnlyEggs [
 	| result |
 
@@ -116,7 +115,7 @@ AllergiesTest >> test04_AllergicToOnlyEggs [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test05_AllergicToEggsInAdditionToOtherStuffLikeEggsRepeated [
 	| result |
 
@@ -124,7 +123,7 @@ AllergiesTest >> test05_AllergicToEggsInAdditionToOtherStuffLikeEggsRepeated [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test06_AllergicToEggsInAdditionToOtherStuffLikeShellfish [
 	| result |
 
@@ -132,7 +131,7 @@ AllergiesTest >> test06_AllergicToEggsInAdditionToOtherStuffLikeShellfish [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test07_AllergicToEggsInAdditionToOtherStuffLikeStrawberries [
 	| result |
 
@@ -140,7 +139,7 @@ AllergiesTest >> test07_AllergicToEggsInAdditionToOtherStuffLikeStrawberries [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test08_AllergicToStrawberriesButNotPeanuts [
 	| result |
 
@@ -148,7 +147,7 @@ AllergiesTest >> test08_AllergicToStrawberriesButNotPeanuts [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test09_AllergicToStrawberriesButNotShellfish [
 	| result |
 
@@ -156,7 +155,7 @@ AllergiesTest >> test09_AllergicToStrawberriesButNotShellfish [
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test10_AllergicToStrawberriesAndAlsoEggs [
 	| result |
 
@@ -164,7 +163,7 @@ AllergiesTest >> test10_AllergicToStrawberriesAndAlsoEggs [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test11_AllergicToStrawberriesAndAlsoStrawberriesRepeated [
 	| result |
 
@@ -172,7 +171,7 @@ AllergiesTest >> test11_AllergicToStrawberriesAndAlsoStrawberriesRepeated [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test12_ListWhenNoAllergies [
 	| result |
 
@@ -180,7 +179,7 @@ AllergiesTest >> test12_ListWhenNoAllergies [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test13_ListWhenJustEggs [
 	| result |
 
@@ -188,7 +187,7 @@ AllergiesTest >> test13_ListWhenJustEggs [
 	self assert: result equals: #('eggs' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test14_ListWhenJustPeanuts [
 	| result |
 
@@ -196,7 +195,7 @@ AllergiesTest >> test14_ListWhenJustPeanuts [
 	self assert: result equals: #('peanuts' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test15_ListWhenJustStrawberries [
 	| result |
 
@@ -204,7 +203,7 @@ AllergiesTest >> test15_ListWhenJustStrawberries [
 	self assert: result equals: #('strawberries' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test16_ListWhenEggsAndPeanuts [
 	| result |
 
@@ -212,7 +211,7 @@ AllergiesTest >> test16_ListWhenEggsAndPeanuts [
 	self assert: result equals: #('eggs' 'peanuts' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test17_ListWhenMoreThanEggsButNotPeanuts [
 	| result |
 
@@ -220,7 +219,7 @@ AllergiesTest >> test17_ListWhenMoreThanEggsButNotPeanuts [
 	self assert: result equals: #('eggs' 'shellfish' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test18_ListWhenLotsOfStuff [
 	| result |
 
@@ -228,7 +227,7 @@ AllergiesTest >> test18_ListWhenLotsOfStuff [
 	self assert: result equals: #('strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test19_ListWhenEverything [
 	| result |
 
@@ -236,7 +235,7 @@ AllergiesTest >> test19_ListWhenEverything [
 	self assert: result equals: #('eggs' 'peanuts' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AllergiesTest >> test20_ListWhenNoAllergenScoreParts [
 	| result |
 

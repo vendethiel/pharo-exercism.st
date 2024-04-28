@@ -47,15 +47,16 @@ Try using the Finder - Examples searcher, to see if there is a useful method for
 
 "
 Class {
-	#name : #MatrixTest,
-	#superclass : #ExercismTest,
+	#name : 'MatrixTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'matrixCalculator'
 	],
-	#category : #'Exercise@Matrix'
+	#category : 'Exercise@Matrix',
+	#package : 'Exercise@Matrix'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 MatrixTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -67,25 +68,25 @@ MatrixTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MatrixTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'bea80017-9d41-0d00-900d-a13308866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MatrixTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MatrixTest >> setUp [
 	super setUp.
 	matrixCalculator := Matrix new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 	| result |
 
@@ -93,7 +94,7 @@ MatrixTest >> test01_ExtractRowFromOneNumberMatrix [
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test02_CanExtractRow [
 	| result |
 
@@ -102,7 +103,7 @@ MatrixTest >> test02_CanExtractRow [
 	self assert: result equals: #(3 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 	| result |
 
@@ -111,7 +112,7 @@ MatrixTest >> test03_ExtractRowWhereNumbersHaveDifferentWidths [
 	self assert: result equals: #(10 20 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 	| result |
 
@@ -122,7 +123,7 @@ MatrixTest >> test04_CanExtractRowFromNonsquareMatrix [
 	self assert: result equals: #(7 8 9 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 	| result |
 
@@ -130,7 +131,7 @@ MatrixTest >> test05_ExtractColumnFromOneNumberMatrix [
 	self assert: result equals: #(1 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test06_CanExtractColumn [
 	| result |
 
@@ -140,7 +141,7 @@ MatrixTest >> test06_CanExtractColumn [
 	self assert: result equals: #(3 6 9 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 	| result |
 
@@ -151,7 +152,7 @@ MatrixTest >> test07_CanExtractColumnFromNonsquareMatrix [
 	self assert: result equals: #(3 6 9 6 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MatrixTest >> test08_ExtractColumnWhereNumbersHaveDifferentWidths [
 	| result |
 

@@ -1,79 +1,65 @@
-"
-I am a simple Clock object
-"
 Class {
-	#name : #Clock,
-	#superclass : #Object,
+	#name : 'Clock',
+	#superclass : 'Object',
 	#instVars : [
 		'hour',
 		'minute'
 	],
-	#category : #'Exercise@Clock'
+	#category : 'Exercise@Clock',
+	#package : 'Exercise@Clock'
 }
 
-{ #category : #exercism }
-Clock class >> hour: hourInteger minute: minuteInteger [ 
-	^self new 
-		initializeHour: hourInteger minute: minuteInteger;
+{ #category : 'instance creation' }
+Clock class >> hour: h minute: m [ 
+	^ self new
+		hour: h;
+		minute: m;
 		yourself
 ]
 
-{ #category : #arithmetic }
-Clock >> + anInteger [
-	"Answer a new instance of the receiver added to anInteger minutes"
-	
-	^ self class hour: self hour minute: self minute + anInteger
+{ #category : 'arithmetic' }
+Clock >> + m [
+	self minute: minute + m
 ]
 
-{ #category : #arithmetic }
-Clock >> - anInteger [
-	"Answer a new instance of the receiver subtracted by anInteger minutes"
-
-	^ self class hour: self hour minute: self minute - anInteger
+{ #category : 'arithmetic' }
+Clock >> - m [
+	self minute: minute - m
 ]
 
-{ #category : #comparing }
-Clock >> = anObject [
-	"Answer whether the receiver and anObject represent the same object."
-
-	self == anObject
-		ifTrue: [ ^ true ].
-	self class = anObject class
-		ifFalse: [ ^ false ].
-	^ minute = anObject minute and: [ hour = anObject hour ]
+{ #category : 'comparing' }
+Clock >> = o [
+	^ (self hour = o hour) & (self minute = o minute)
 ]
 
-{ #category : #comparing }
-Clock >> hash [
-	"Answer an integer value that is related to the identity of the receiver."
-
-	^ minute hash bitXor: hour hash
+{ #category : 'converting' }
+Clock >> asString [
+	^ hour asTwoCharacterString , ':', minute asTwoCharacterString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Clock >> hour [
 	^ hour
 ]
 
-{ #category : #initializing }
-Clock >> initializeHour: hourInteger minute: minuteInteger [
-
-	hour := (minuteInteger // 60 + hourInteger) % 24.
-	minute := minuteInteger % 60
+{ #category : 'accessing' }
+Clock >> hour: h [
+	hour := h % 24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Clock >> minute [
 	^ minute
 ]
 
-{ #category : #printing }
-Clock >> printOn: aStream [
-	"Output the reciever on a Stream for printing, debugging etc."
-
-	aStream nextPutAll: ('{1}{2}:{3}{4}' format: {
-		(hour < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
-		hour.
-		(minute < 10 ifTrue: [ '0' ] ifFalse: [ '' ]).
-		minute })
+{ #category : 'accessing' }
+Clock >> minute: nn [
+	|n|
+	n := nn.
+	[ n < 0 ] whileTrue: [ 
+		n := n + 60.
+		self hour: hour - 1
+	 ].
+	self hour: hour + (n / 60) floor.
+	minute := n % 60
 ]

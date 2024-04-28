@@ -1,36 +1,41 @@
 "
-This solution shows how Pharo can access bit sequences to solve this exercise. In this case, Pharo's 1 based indexing works well with an allergy list.
+Allergies computer
 "
 Class {
-	#name : #Allergies,
-	#superclass : #Object,
-	#category : #'Exercise@Allergies'
+	#name : 'Allergies',
+	#superclass : 'Object',
+	#classInstVars : [
+		'mapping'
+	],
+	#category : 'Exercise@Allergies',
+	#package : 'Exercise@Allergies'
 }
 
-{ #category : #config }
-Allergies class >> allergyList [
-	"Each item is a successive power of 2, so order is important"
-	
-	^ #('eggs' 'peanuts' 'shellfish' 'strawberries' 'tomatoes' 'chocolate' 'pollen' 'cats')
+{ #category : 'class initialization' }
+Allergies class >> initialize [ 
+	mapping := {
+		'eggs' -> 1.
+		'peanuts' -> 2.
+		'shellfish' -> 4.
+		'strawberries' -> 8.
+		'tomatoes' -> 16.
+		'chocolate' -> 32.
+		'pollen' -> 64.
+		'cats' -> 128.
+	} asOrderedDictionary 
 ]
 
-{ #category : #exercism }
-Allergies >> allergicToItem: itemString forScore: anInteger [
-	^ (anInteger bitAt: (self bitIndexFor: itemString)) = 1
+{ #category : 'accessing' }
+Allergies class >> mapping [
+  ^ mapping
 ]
 
-{ #category : #exercism }
-Allergies >> allergyListForScore: scoringInteger [
-	^ (self class allergyList
-		collectWithIndex: [ :item :index | 
-			(scoringInteger bitAt: index) = 1
-				ifTrue: [ item ]
-				ifFalse: [ nil ] ]) reject: [ :item | item isNil ]
+{ #category : 'testing' }
+Allergies >> allergicToItem: str forScore: n [ 
+	^ (self class mapping at: str) & n > 0
 ]
 
-{ #category : #helper }
-Allergies >> bitIndexFor: aString [
-	^ self class allergyList
-		indexOf: aString
-		ifAbsent: [ ^ Error signal: 'invalid food item, ' , aString ]
+{ #category : 'testing' }
+Allergies >> allergyListForScore: n [
+	^ self class mapping keys select: [ :x | self allergicToItem: x forScore: n ]
 ]

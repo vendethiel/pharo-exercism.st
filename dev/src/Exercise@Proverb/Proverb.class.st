@@ -1,28 +1,16 @@
-"
-This solution is greatly simplified if you browse the iterators over the collection classes and spot #overlappingPairsDo:
-"
 Class {
-	#name : #Proverb,
-	#superclass : #Object,
-	#category : #'Exercise@Proverb'
+	#name : 'Proverb',
+	#superclass : 'Object',
+	#classInstVars : [
+		'mapping'
+	],
+	#category : 'Exercise@Proverb',
+	#package : 'Exercise@Proverb'
 }
 
-{ #category : #exercism }
-Proverb >> reciteStrings: wordCollection [
-	"Run through the word list with overlapping pairs"
-	| phraseResult |
-
-	wordCollection ifEmpty: [ ^#() ].
-	
-	phraseResult := OrderedCollection new.
-	wordCollection
-		overlappingPairsDo: [ :word1 :word2 | 
-			phraseResult
-				add:
-					('For want of a {1} the {2} was lost.' format: {word1. word2}) ].
-				
-	phraseResult
-		add: ('And all for the want of a {1}.' format: {wordCollection first}).
-		
-	^phraseResult asArray
+{ #category : 'testing' }
+Proverb >> reciteStrings: xs [ 
+	xs size < 1 ifTrue: [ ^ #() ].
+	^ (xs overlappingPairsCollect: [ :x :y | 'For want of a ',x,' the ',y,' was lost.' ])
+		copyWith: 'And all for the want of a ',xs first,'.'
 ]

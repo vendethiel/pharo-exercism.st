@@ -11,9 +11,7 @@ Class {
 { #category : 'numeric' }
 RomanNumerals >> romanNumber: n [
 	 "Computes the roman number"
-    |num|
-    num := RomanNumber from: n.
-	 num
+	 ^ (RomanNumber from: n)
         change: 1000 to: 'M';
         change: 900 to: 'CM';
         change: 500 to: 'D';
@@ -26,6 +24,6 @@ RomanNumerals >> romanNumber: n [
         change: 9 to: 'IX';
         change: 5 to: 'V';
         change: 4 to: 'IV';
-        change: 1 to: 'I'.
-    ^ num value.
+        change: 1 to: 'I';
+		  value.
 ]

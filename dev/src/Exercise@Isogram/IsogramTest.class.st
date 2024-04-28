@@ -20,15 +20,16 @@ There is a range of interesting data types in Pharo, it's worth taking the time 
 
 "
 Class {
-	#name : #IsogramTest,
-	#superclass : #ExercismTest,
+	#name : 'IsogramTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'isogramCalculator'
 	],
-	#category : #'Exercise@Isogram'
+	#category : 'Exercise@Isogram',
+	#package : 'Exercise@Isogram'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 IsogramTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -40,25 +41,25 @@ IsogramTest class >> exercise [
 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 IsogramTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'9e0074be-4a3f-0d00-bb4e-73e5071d6982'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 IsogramTest class >> version [
 	"Generated from specification: 28 February 2019"
 	^'1.7.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IsogramTest >> setUp [
 	super setUp.
 	isogramCalculator := Isogram new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test01_CheckIfTheGivenStringIsAnIsogramEmptyString [
 	| result |
 
@@ -66,7 +67,7 @@ IsogramTest >> test01_CheckIfTheGivenStringIsAnIsogramEmptyString [
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test02_CheckIfTheGivenStringIsAnIsogramIsogramWithOnlyLowerCaseCharacters [
 	| result |
 
@@ -74,7 +75,7 @@ IsogramTest >> test02_CheckIfTheGivenStringIsAnIsogramIsogramWithOnlyLowerCaseCh
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test03_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacter [
 	| result |
 
@@ -82,7 +83,7 @@ IsogramTest >> test03_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedChara
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test04_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedCharacterFromTheEndOfTheAlphabet [
 	| result |
 
@@ -90,7 +91,7 @@ IsogramTest >> test04_CheckIfTheGivenStringIsAnIsogramWordWithOneDuplicatedChara
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test05_CheckIfTheGivenStringIsAnIsogramLongestReportedEnglishIsogram [
 	| result |
 
@@ -98,7 +99,7 @@ IsogramTest >> test05_CheckIfTheGivenStringIsAnIsogramLongestReportedEnglishIsog
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test06_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCase [
 	| result |
 
@@ -106,7 +107,7 @@ IsogramTest >> test06_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacte
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test07_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacterInMixedCaseLowercaseFirst [
 	| result |
 
@@ -114,7 +115,7 @@ IsogramTest >> test07_CheckIfTheGivenStringIsAnIsogramWordWithDuplicatedCharacte
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test08_CheckIfTheGivenStringIsAnIsogramHypotheticalIsogrammicWordWithHyphen [
 	| result |
 
@@ -122,7 +123,7 @@ IsogramTest >> test08_CheckIfTheGivenStringIsAnIsogramHypotheticalIsogrammicWord
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test09_CheckIfTheGivenStringIsAnIsogramHypotheticalWordWithDuplicatedCharacterFollowingHyphen [
 	| result |
 
@@ -130,7 +131,7 @@ IsogramTest >> test09_CheckIfTheGivenStringIsAnIsogramHypotheticalWordWithDuplic
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test10_CheckIfTheGivenStringIsAnIsogramIsogramWithDuplicatedHyphen [
 	| result |
 
@@ -138,7 +139,7 @@ IsogramTest >> test10_CheckIfTheGivenStringIsAnIsogramIsogramWithDuplicatedHyphe
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test11_CheckIfTheGivenStringIsAnIsogramMadeupNameThatIsAnIsogram [
 	| result |
 
@@ -146,7 +147,7 @@ IsogramTest >> test11_CheckIfTheGivenStringIsAnIsogramMadeupNameThatIsAnIsogram 
 	self assert: result equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test12_CheckIfTheGivenStringIsAnIsogramDuplicatedCharacterInTheMiddle [
 	| result |
 
@@ -154,7 +155,7 @@ IsogramTest >> test12_CheckIfTheGivenStringIsAnIsogramDuplicatedCharacterInTheMi
 	self assert: result equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IsogramTest >> test13_CheckIfTheGivenStringIsAnIsogramSameFirstAndLastCharacters [
 	| result |
 

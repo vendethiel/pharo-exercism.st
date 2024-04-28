@@ -35,15 +35,16 @@ Note: in the original problem specification, the grainsCalculator is called via 
 
 "
 Class {
-	#name : #GrainsTest,
-	#superclass : #ExercismTest,
+	#name : 'GrainsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'grainsCalculator'
 	],
-	#category : #'Exercise@Grains'
+	#category : 'Exercise@Grains',
+	#package : 'Exercise@Grains'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 GrainsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -55,25 +56,25 @@ GrainsTest class >> exercise [
 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GrainsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'93dde1bb-8040-0d00-812a-052301deb008'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 GrainsTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 GrainsTest >> setUp [
 	super setUp.
 	grainsCalculator := Grains new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareAt1 [
 	| result |
 
@@ -81,7 +82,7 @@ GrainsTest >> test01_ReturnsTheNumberOfGrainsOnTheSquareAt1 [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareAt2 [
 	| result |
 
@@ -89,7 +90,7 @@ GrainsTest >> test02_ReturnsTheNumberOfGrainsOnTheSquareAt2 [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareAt3 [
 	| result |
 
@@ -97,7 +98,7 @@ GrainsTest >> test03_ReturnsTheNumberOfGrainsOnTheSquareAt3 [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareAt4 [
 	| result |
 
@@ -105,7 +106,7 @@ GrainsTest >> test04_ReturnsTheNumberOfGrainsOnTheSquareAt4 [
 	self assert: result equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareAt16 [
 	| result |
 
@@ -113,7 +114,7 @@ GrainsTest >> test05_ReturnsTheNumberOfGrainsOnTheSquareAt16 [
 	self assert: result equals: 32768
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareAt32 [
 	| result |
 
@@ -121,7 +122,7 @@ GrainsTest >> test06_ReturnsTheNumberOfGrainsOnTheSquareAt32 [
 	self assert: result equals: 2147483648
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareAt64 [
 	| result |
 
@@ -129,7 +130,7 @@ GrainsTest >> test07_ReturnsTheNumberOfGrainsOnTheSquareAt64 [
 	self assert: result equals: 9223372036854775808
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException [
 	self
 		should: [grainsCalculator atSquare: 0]
@@ -142,7 +143,7 @@ GrainsTest >> test08_ReturnsTheNumberOfGrainsOnTheSquareSquare0RaisesAnException
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnException [
 	self
 		should: [grainsCalculator atSquare: -1]
@@ -151,7 +152,7 @@ GrainsTest >> test09_ReturnsTheNumberOfGrainsOnTheSquareNegativeSquareRaisesAnEx
 		description: 'Should get an error with the correct description'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test10_ReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64RaisesAnException [
 	self
 		should: [grainsCalculator atSquare: 65]
@@ -160,7 +161,7 @@ GrainsTest >> test10_ReturnsTheNumberOfGrainsOnTheSquareSquareGreaterThan64Raise
 		description: 'Should get an error with the correct description'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GrainsTest >> test11_ReturnsTheTotalNumberOfGrainsOnTheBoard [
 	| result |
 
