@@ -8,7 +8,7 @@ Class {
 	#package : 'Exercise@Forth'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'code evaluation' }
 Forth >> eval: parts in: interpreter [
 	parts first = ':'
 		ifTrue: [

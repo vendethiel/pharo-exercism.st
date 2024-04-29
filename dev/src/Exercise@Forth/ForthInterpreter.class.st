@@ -17,7 +17,17 @@ Class {
 
 { #category : 'class initialization' }
 ForthInterpreter class >> initialize [
-	mapping := { ';' -> 'semicolon'. '+' -> 'plus'. '-' -> 'minus'. '*' -> 'times'. '/' -> 'div' } asDictionary
+	mapping := {
+		';' -> #semicolon.
+		'+' -> #plus.
+		'-' -> #minus.
+		'*' -> #times.
+		'/' -> #div.
+		'over' -> #over.
+		'swap' -> #swap.
+		'dup' -> #dup.
+		'drop' -> #drop.
+	} asDictionary
 ]
 
 { #category : 'accessing' }
@@ -25,15 +35,20 @@ ForthInterpreter class >> mapping [
 	^ mapping
 ]
 
-{ #category : 'instance creation' }
+{ #category : 'aliasing' }
 ForthInterpreter >> alias: k to: xs [
-	k isAllDigits ifTrue: [ Error signal: 'cannot redefine numbers' ].
-	aliases at: k put: xs
+	k isAllDigits ifTrue: [ Error signal: 'illegal operation' ].
+	aliases at: k asLowercase put: ({xs. aliases copy})
 ]
 
-{ #category : 'accessing' }
+{ #category : 'evaluation' }
 ForthInterpreter >> all: xs [
-	xs do: [ :x | self interpret: x ]
+	self all: xs under: aliases
+]
+
+{ #category : 'evaluation' }
+ForthInterpreter >> all: xs under: local [
+	xs do: [ :x | self interpret: x under: local ]
 ]
 
 { #category : 'evaluation' }
@@ -62,16 +77,28 @@ ForthInterpreter >> initialize [
 ]
 
 { #category : 'evaluation' }
-ForthInterpreter >> interpret: xx [
+ForthInterpreter >> interpret: x [
+	self interpret: x under: aliases
+]
+
+{ #category : 'evaluation' }
+ForthInterpreter >> interpret: xx under: locals [
 	|x|
 	x := xx asLowercase.
 	x isAllDigits
 		ifTrue: [ stack add: x asNumber ]
 		ifFalse: [
-			aliases at: x
-				ifPresent: [ :xs | self all: xs ]
-				ifAbsent: [ self perform: (self class mapping at: x ifAbsent: [x]) asSymbol ]
+			locals at: x
+				ifPresent: [ :xs | self all: xs first under: xs last ]
+				ifAbsent: [ self mapped: x ]
 		]
+]
+
+{ #category : 'evaluation' }
+ForthInterpreter >> mapped: x [
+	self class mapping at: x
+		ifPresent: [ :sym | self perform: sym ]
+		ifAbsent: [ Error signal: 'undefined operation' ]
 ]
 
 { #category : 'evaluation' }
@@ -79,7 +106,7 @@ ForthInterpreter >> minus [
 	stack add: (self pop2 reduce: [ :a :b | b - a ])
 ]
 
-{ #category : 'modes' }
+{ #category : 'evaluation' }
 ForthInterpreter >> over [
 	|temp|
 	temp := self pop2.
@@ -89,7 +116,7 @@ ForthInterpreter >> over [
 		add: temp last.
 ]
 
-{ #category : 'shapes' }
+{ #category : 'evaluation' }
 ForthInterpreter >> plus [
 	stack add: (self pop2 reduce: [ :a :b | a + b ])
 ]

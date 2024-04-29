@@ -23,15 +23,16 @@ The Pythagorean theorum will help.
 
 "
 Class {
-	#name : #DartsTest,
-	#superclass : #ExercismTest,
+	#name : 'DartsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'dartsCalculator'
 	],
-	#category : #'Exercise@Darts'
+	#category : 'Exercise@Darts',
+	#package : 'Exercise@Darts'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DartsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -42,25 +43,25 @@ DartsTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DartsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'98fc253b-e642-0d00-8e1a-5ef3059054ed'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DartsTest class >> version [
 	"Generated from specification: 14 April 2019"
 	^'1.2.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DartsTest >> setUp [
 	super setUp.
 	dartsCalculator := Darts new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test01_ADartLandsOutsideTheTarget [
 	| result |
 
@@ -68,7 +69,7 @@ DartsTest >> test01_ADartLandsOutsideTheTarget [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test02_ADartLandsJustInTheBorderOfTheTarget [
 	| result |
 
@@ -76,7 +77,7 @@ DartsTest >> test02_ADartLandsJustInTheBorderOfTheTarget [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test03_ADartLandsInTheOuterCircle [
 	| result |
 
@@ -84,7 +85,7 @@ DartsTest >> test03_ADartLandsInTheOuterCircle [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test04_ADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
 	| result |
 
@@ -92,7 +93,7 @@ DartsTest >> test04_ADartLandsRightInTheBorderBetweenOuterAndMiddleCircles [
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test05_ADartLandsInTheMiddleCircle [
 	| result |
 
@@ -100,7 +101,7 @@ DartsTest >> test05_ADartLandsInTheMiddleCircle [
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test06_ADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
 	| result |
 
@@ -108,7 +109,7 @@ DartsTest >> test06_ADartLandsRightInTheBorderBetweenMiddleAndInnerCircles [
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test07_ADartLandsInTheInnerCircle [
 	| result |
 
@@ -116,7 +117,7 @@ DartsTest >> test07_ADartLandsInTheInnerCircle [
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test08_ADartWhoseCoordinatesSumToGreaterThan1ButWhoseRadiusToOriginIsLessThanOrEqualTo1IsScoredInTheInnerCircle [
 	| result |
 
@@ -124,7 +125,7 @@ DartsTest >> test08_ADartWhoseCoordinatesSumToGreaterThan1ButWhoseRadiusToOrigin
 	self assert: result equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test09_ADartWhoseCoordinatesSumToGreaterThan5ButWhoseRadiusToOriginIsLessThanOrEqualTo5IsScoredInTheMiddleCircle [
 	| result |
 
@@ -132,7 +133,7 @@ DartsTest >> test09_ADartWhoseCoordinatesSumToGreaterThan5ButWhoseRadiusToOrigin
 	self assert: result equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DartsTest >> test10_ADartWhoseCoordinatesSumToGreaterThan10ButWhoseRadiusToOriginIsLessThanOrEqualTo10IsScoredInTheOuterCircle [
 	| result |
 

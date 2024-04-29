@@ -1,53 +1,43 @@
 "
-This solution is pretty straight forward.
+Verse outputter
 "
 Class {
-	#name : #TwelveDays,
-	#superclass : #Object,
-	#category : #'Exercise@TwelveDays'
+	#name : 'TwelveDays',
+	#superclass : 'Object',
+	#classInstVars : [
+		'verses',
+		'ordinal'
+	],
+	#category : 'Exercise@TwelveDays',
+	#package : 'Exercise@TwelveDays'
 }
 
-{ #category : #gifts }
-TwelveDays >> gifts [
-	^ #(
-	'a Partridge in a Pear Tree'
-	'two Turtle Doves'
-	'three French Hens'
-	'four Calling Birds'
-	'five Gold Rings'
-	'six Geese-a-Laying' 
-	'seven Swans-a-Swimming' 
-	'eight Maids-a-Milking' 
-	'nine Ladies Dancing'
-	'ten Lords-a-Leaping' 
-	'eleven Pipers Piping' 
-	'twelve Drummers Drumming' )
+{ #category : 'class initialization' }
+TwelveDays class >> initialize [
+	verses := #( 'a Partridge in a Pear Tree' 'two Turtle Doves' 'three French Hens' 'four Calling Birds' 'five Gold Rings' 'six Geese-a-Laying' 'seven Swans-a-Swimming' 'eight Maids-a-Milking' 'nine Ladies Dancing' 'ten Lords-a-Leaping' 'eleven Pipers Piping' 'twelve Drummers Drumming' ).
+	ordinal := #('first' 'second' 'third' 'fourth' 'fifth' 'sixth' 'seventh' 'eighth' 'ninth' 'tenth' 'eleventh' 'twelfth')
 ]
 
-{ #category : #gifts }
-TwelveDays >> giftsOnDay: anInteger [
-	^ anInteger = 1
-		ifTrue: [ self gifts first ]
-		ifFalse: [
-			| gifts |
-			
-			gifts := (self gifts copyFrom: 1 to: anInteger) reverse.
-			(gifts allButLast inject: '' into: [ :str :each | str , each , ', ' ]) , 'and ', gifts last ]
+{ #category : 'accessing' }
+TwelveDays class >> ordinal: n [ 
+	^ ordinal at: n
 ]
 
-{ #category : #converting }
-TwelveDays >> ordinal: anInteger [
-	"This would ideally be an extension on Integer or something on those lines"
-	^ #(first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth) at: anInteger 
+{ #category : 'test data' }
+TwelveDays class >> verses [
+	^ verses
 ]
 
-{ #category : #reciting }
-TwelveDays >> reciteStartVerse: start endVerse: end [
-	^ (start to: end) collect: [ :each | self verse: each ]
+{ #category : 'test data' }
+TwelveDays >> reciteStartVerse: start endVerse: end [ 
+	| cur |
+	cur := (self class verses copyFrom: start to: end).
+	^ cur collectWithIndex: [ :e :i | self verse: i + start ]
 ]
 
-{ #category : #reciting }
-TwelveDays >> verse: anInteger [
-	^ 'On the {1} day of Christmas my true love gave to me: {2}.'
-		format: { self ordinal: anInteger. self giftsOnDay: anInteger }
+{ #category : 'test data' }
+TwelveDays >> verse: idx [
+	| gifts |
+	gifts := (self class verses takeFirst: idx - 1) reversed joinUsing: ', ' last: ', and '.
+	^ 'On the ' , (self class ordinal: (idx - 1)) , ' day of Christmas my true love gave to me: ' , gifts , '.'
 ]

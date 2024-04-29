@@ -50,15 +50,16 @@ Its handy to have a list of the verses:
 
 "
 Class {
-	#name : #TwelveDaysTest,
-	#superclass : #ExercismTest,
+	#name : 'TwelveDaysTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'twelveDaysCalculator'
 	],
-	#category : #'Exercise@TwelveDays'
+	#category : 'Exercise@TwelveDays',
+	#package : 'Exercise@TwelveDays'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TwelveDaysTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -71,25 +72,25 @@ TwelveDaysTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TwelveDaysTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'7047d916-9d41-0d00-8ff2-3a9808866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TwelveDaysTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TwelveDaysTest >> setUp [
 	super setUp.
 	twelveDaysCalculator := TwelveDays new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test01_VerseFirstDayAPartridgeInAPearTree [
 	| result |
 
@@ -97,7 +98,7 @@ TwelveDaysTest >> test01_VerseFirstDayAPartridgeInAPearTree [
 	self assert: result equals: #('On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test02_VerseSecondDayTwoTurtleDoves [
 	| result |
 
@@ -105,7 +106,7 @@ TwelveDaysTest >> test02_VerseSecondDayTwoTurtleDoves [
 	self assert: result equals: #('On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test03_VerseThirdDayThreeFrenchHens [
 	| result |
 
@@ -113,7 +114,7 @@ TwelveDaysTest >> test03_VerseThirdDayThreeFrenchHens [
 	self assert: result equals: #('On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test04_VerseFourthDayFourCallingBirds [
 	| result |
 
@@ -121,7 +122,7 @@ TwelveDaysTest >> test04_VerseFourthDayFourCallingBirds [
 	self assert: result equals: #('On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test05_VerseFifthDayFiveGoldRings [
 	| result |
 
@@ -129,7 +130,7 @@ TwelveDaysTest >> test05_VerseFifthDayFiveGoldRings [
 	self assert: result equals: #('On the fifth day of Christmas my true love gave to me: five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test06_VerseSixthDaySixGeesealaying [
 	| result |
 
@@ -137,7 +138,7 @@ TwelveDaysTest >> test06_VerseSixthDaySixGeesealaying [
 	self assert: result equals: #('On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test07_VerseSeventhDaySevenSwansaswimming [
 	| result |
 
@@ -145,7 +146,7 @@ TwelveDaysTest >> test07_VerseSeventhDaySevenSwansaswimming [
 	self assert: result equals: #('On the seventh day of Christmas my true love gave to me: seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test08_VerseEighthDayEightMaidsamilking [
 	| result |
 
@@ -153,7 +154,7 @@ TwelveDaysTest >> test08_VerseEighthDayEightMaidsamilking [
 	self assert: result equals: #('On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test09_VerseNinthDayNineLadiesDancing [
 	| result |
 
@@ -161,7 +162,7 @@ TwelveDaysTest >> test09_VerseNinthDayNineLadiesDancing [
 	self assert: result equals: #('On the ninth day of Christmas my true love gave to me: nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test10_VerseTenthDayTenLordsaleaping [
 	| result |
 
@@ -169,7 +170,7 @@ TwelveDaysTest >> test10_VerseTenthDayTenLordsaleaping [
 	self assert: result equals: #('On the tenth day of Christmas my true love gave to me: ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test11_VerseEleventhDayElevenPipersPiping [
 	| result |
 
@@ -177,7 +178,7 @@ TwelveDaysTest >> test11_VerseEleventhDayElevenPipersPiping [
 	self assert: result equals: #('On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test12_VerseTwelfthDayTwelveDrummersDrumming [
 	| result |
 
@@ -185,7 +186,7 @@ TwelveDaysTest >> test12_VerseTwelfthDayTwelveDrummersDrumming [
 	self assert: result equals: #('On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test13_LyricsRecitesFirstThreeVersesOfTheSong [
 	| result |
 
@@ -193,7 +194,7 @@ TwelveDaysTest >> test13_LyricsRecitesFirstThreeVersesOfTheSong [
 	self assert: result equals: #('On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.' 'On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.' 'On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test14_LyricsRecitesThreeVersesFromTheMiddleOfTheSong [
 	| result |
 
@@ -201,7 +202,7 @@ TwelveDaysTest >> test14_LyricsRecitesThreeVersesFromTheMiddleOfTheSong [
 	self assert: result equals: #('On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' 'On the fifth day of Christmas my true love gave to me: five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' 'On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TwelveDaysTest >> test15_LyricsRecitesTheWholeSong [
 	| result |
 

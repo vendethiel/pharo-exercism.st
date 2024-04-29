@@ -1,19 +1,18 @@
 "
-This is pretty straight forward if the soluton uses c = sqrt of a^2 + b^2
+Dart points calculator
 "
 Class {
-	#name : #Darts,
-	#superclass : #Object,
-	#category : #'Exercise@Darts'
+	#name : 'Darts',
+	#superclass : 'Object',
+	#category : 'Exercise@Darts',
+	#package : 'Exercise@Darts'
 }
 
-{ #category : #scoring }
-Darts >> scoreX: anInteger y: anotherInteger [ 
-	| length |
-	
-	length := (anInteger squared + anotherInteger squared) sqrt.
-	length > 10 ifTrue: [ ^ 0 ].
-	length > 5 ifTrue: [ ^ 1 ].
-	length > 1 ifTrue: [ ^ 5 ].
-	^ 10
+{ #category : 'math functions' }
+Darts >> scoreX: x y: y [ 
+	(DistanceCalculator ofX: x y: y)
+		ifAbove: 10 then: [ ^0 ];
+		ifAbove: 5 then: [ ^1 ];
+		ifAbove: 1 then: [ ^5 ];
+		else: [ ^10 ].
 ]

@@ -1,37 +1,36 @@
 "
-I return ages in planet-years for planets in the solar system. This solution shows how to use a lazy initialized class variable for a simple lookup table.
+Space age calculator
 "
 Class {
-	#name : #SpaceAge,
-	#superclass : #Object,
-	#classVars : [
-		'OrbitalPeriods'
+	#name : 'SpaceAge',
+	#superclass : 'Object',
+	#classInstVars : [
+		'mapping'
 	],
-	#category : #'Exercise@SpaceAge'
+	#category : 'Exercise@SpaceAge',
+	#package : 'Exercise@SpaceAge'
 }
 
-{ #category : #exercism }
-SpaceAge class >> orbitalPeriods [
-	"Answer the orbital period table of different planets in seconds.
-	Note: this is the clearest way to define a constant in Pharo although you can also use class #initialize or Pool Dictionaries"
-
-	^ OrbitalPeriods
-		ifNil: [ | earthOrbitalPeriod |
-			earthOrbitalPeriod := 31557600.
-			
-			OrbitalPeriods := {('Earth' -> earthOrbitalPeriod).
-			('Mercury' -> (earthOrbitalPeriod * 0.2408467)).
-			('Venus' -> (earthOrbitalPeriod * 0.61519726)).
-			('Mars' -> (earthOrbitalPeriod * 1.8808158)).
-			('Jupiter' -> (earthOrbitalPeriod * 11.862615)).
-			('Saturn' -> (earthOrbitalPeriod * 29.447498)).
-			('Uranus' -> (earthOrbitalPeriod * 84.016846)).
-			('Neptune' -> (earthOrbitalPeriod * 164.79132))} asDictionary ]
+{ #category : 'class initialization' }
+SpaceAge class >> initialize [
+	mapping := { 
+		'Mercury' -> 0.2408467.
+		'Venus' -> 0.61519726.
+		'Earth' -> 1.0.
+		'Mars' -> 1.8808158.
+		'Jupiter' -> 11.862615.
+		'Saturn' -> 29.447498.
+		'Uranus' -> 84.016846.
+		'Neptune' -> 164.79132.
+	} asDictionary
 ]
 
-{ #category : #exercism }
-SpaceAge >> ageOnPlanet: aPlanet at: aSeconds [
-	"Return the age in aPlanet's years at aSeconds old"
+{ #category : 'mathematical operations' }
+SpaceAge class >> planetPeriod: planet [ 
+	^ mapping at: planet
+]
 
-	^ aSeconds / (self class orbitalPeriods at: aPlanet)
+{ #category : 'mathematical functions' }
+SpaceAge >> ageOnPlanet: planet at: seconds [
+	^ seconds * (1 / (self class planetPeriod: planet)) / 31557600
 ]
