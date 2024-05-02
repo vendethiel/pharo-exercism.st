@@ -14,15 +14,16 @@ Try to find a way to split up a String and then iterate over the resulting secti
 
 "
 Class {
-	#name : #AcronymTest,
-	#superclass : #ExercismTest,
+	#name : 'AcronymTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'acronymCalculator'
 	],
-	#category : #'Exercise@Acronym'
+	#category : 'Exercise@Acronym',
+	#package : 'Exercise@Acronym'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AcronymTest class >> exercise [
 	^(self createExerciseAfter: ReverseStringTest)
 		isCore: false;
@@ -31,25 +32,25 @@ AcronymTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AcronymTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'dc7b1fff-f0be-460d-b146-ee84c2acc10b'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AcronymTest class >> version [
 	"Generated from specification: 25 February 2019"
 	^'1.7.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AcronymTest >> setUp [
 	super setUp.
 	acronymCalculator := Acronym new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test01_AbbreviateAPhraseBasic [
 	| result |
 
@@ -57,7 +58,7 @@ AcronymTest >> test01_AbbreviateAPhraseBasic [
 	self assert: result equals: 'PNG'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test02_AbbreviateAPhraseLowercaseWords [
 	| result |
 
@@ -65,7 +66,7 @@ AcronymTest >> test02_AbbreviateAPhraseLowercaseWords [
 	self assert: result equals: 'ROR'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test03_AbbreviateAPhrasePunctuation [
 	| result |
 
@@ -73,7 +74,7 @@ AcronymTest >> test03_AbbreviateAPhrasePunctuation [
 	self assert: result equals: 'FIFO'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test04_AbbreviateAPhraseAllCapsWord [
 	| result |
 
@@ -81,7 +82,7 @@ AcronymTest >> test04_AbbreviateAPhraseAllCapsWord [
 	self assert: result equals: 'GIMP'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test05_AbbreviateAPhrasePunctuationWithoutWhitespace [
 	| result |
 
@@ -89,7 +90,7 @@ AcronymTest >> test05_AbbreviateAPhrasePunctuationWithoutWhitespace [
 	self assert: result equals: 'CMOS'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test06_AbbreviateAPhraseVeryLongAbbreviation [
 	| result |
 
@@ -97,7 +98,7 @@ AcronymTest >> test06_AbbreviateAPhraseVeryLongAbbreviation [
 	self assert: result equals: 'ROTFLSHTMDCOALM'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test07_AbbreviateAPhraseConsecutiveDelimiters [
 	| result |
 
@@ -105,7 +106,7 @@ AcronymTest >> test07_AbbreviateAPhraseConsecutiveDelimiters [
 	self assert: result equals: 'SIMUFTA'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test08_AbbreviateAPhraseApostrophes [
 	| result |
 
@@ -113,7 +114,7 @@ AcronymTest >> test08_AbbreviateAPhraseApostrophes [
 	self assert: result equals: 'HC'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AcronymTest >> test09_AbbreviateAPhraseUnderscoreEmphasis [
 	| result |
 

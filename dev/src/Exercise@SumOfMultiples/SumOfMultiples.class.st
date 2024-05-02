@@ -1,23 +1,19 @@
 "
-This solution uses inject:into: to sum the runnning interval, as well as extracting the multiples test to a seperate method for clarity
+SoM
 "
 Class {
-	#name : #SumOfMultiples,
-	#superclass : #Object,
-	#category : #'Exercise@SumOfMultiples'
+	#name : 'SumOfMultiples',
+	#superclass : 'Object',
+	#category : 'Exercise@SumOfMultiples',
+	#package : 'Exercise@SumOfMultiples'
 }
 
-{ #category : #internal }
-SumOfMultiples >> anyMultiplesOf: aNumber in: aCollection [
-	^ aCollection anySatisfy: [ :multiple | aNumber isDivisibleBy: multiple ]
-]
-
-{ #category : #exercism }
-SumOfMultiples >> sumFactors: aCollection limit: anInteger [
-	
-	^ (1 to: anInteger - 1)
-		sumNumbers: [ :factor | 
-			(self anyMultiplesOf: factor in: aCollection)
-				ifTrue: [ factor ]
-				ifFalse: [ 0 ] ]
+{ #category : 'math functions' }
+SumOfMultiples >> sumFactors: factors limit: level [ 
+	^ (Array streamContents: [ :array |
+		1 to: (level - 1) do: [ :n |
+			(factors anySatisfy: [ :factor | n isDivisibleBy: factor ])
+				ifTrue: [ array nextPut: n ]
+		]
+	]) sum: #yourself ifEmpty: 0
 ]

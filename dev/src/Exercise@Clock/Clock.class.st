@@ -1,3 +1,6 @@
+"
+Clock simulator
+"
 Class {
 	#name : 'Clock',
 	#superclass : 'Object',

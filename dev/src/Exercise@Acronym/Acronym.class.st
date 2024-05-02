@@ -1,20 +1,14 @@
 "
-This solution shows the use of Stream processing.
+Acronymize
 "
 Class {
-	#name : #Acronym,
-	#superclass : #Object,
-	#category : #'Exercise@Acronym'
+	#name : 'Acronym',
+	#superclass : 'Object',
+	#category : 'Exercise@Acronym',
+	#package : 'Exercise@Acronym'
 }
 
-{ #category : #exercism }
-Acronym >> abbreviatePhrase: aString [
-	| words |
-	
-	words := aString splitOn: [ :char | (char isAlphaNumeric or: [ char = $' ]) not].
-	^ String
-		streamContents: [ :stream | 
-			words
-				reject: [ :word | word isEmpty ]
-				thenDo: [ :word | stream nextPut: word first uppercase ] ]
+{ #category : 'string-manipulation' }
+Acronym >> abbreviatePhrase: phrase [ 
+	^ ((phrase copyWithoutAll: '_.') findTokens: '- ') collect: [ :s|s first asUppercase ] as: String
 ]

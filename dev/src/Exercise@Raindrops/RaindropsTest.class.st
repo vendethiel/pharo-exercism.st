@@ -24,15 +24,16 @@ Try to focus on using Test Driven Development for this exercise. Run the tests, 
 
 "
 Class {
-	#name : #RaindropsTest,
-	#superclass : #ExercismTest,
+	#name : 'RaindropsTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'raindropsCalculator'
 	],
-	#category : #'Exercise@Raindrops'
+	#category : 'Exercise@Raindrops',
+	#package : 'Exercise@Raindrops'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 RaindropsTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -44,25 +45,25 @@ RaindropsTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RaindropsTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'c0bcb6c5-3f3f-0d00-995d-a4720043fb1f'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 RaindropsTest class >> version [
 	"Generated from specification: 27 February 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 RaindropsTest >> setUp [
 	super setUp.
 	raindropsCalculator := Raindrops new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test01_TheSoundFor1Is1 [
 	| result |
 
@@ -70,7 +71,7 @@ RaindropsTest >> test01_TheSoundFor1Is1 [
 	self assert: result equals: '1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test02_TheSoundFor3IsPling [
 	| result |
 
@@ -78,7 +79,7 @@ RaindropsTest >> test02_TheSoundFor3IsPling [
 	self assert: result equals: 'Pling'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test03_TheSoundFor5IsPlang [
 	| result |
 
@@ -86,7 +87,7 @@ RaindropsTest >> test03_TheSoundFor5IsPlang [
 	self assert: result equals: 'Plang'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test04_TheSoundFor7IsPlong [
 	| result |
 
@@ -94,7 +95,7 @@ RaindropsTest >> test04_TheSoundFor7IsPlong [
 	self assert: result equals: 'Plong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test05_TheSoundFor6IsPlingAsItHasAFactor3 [
 	| result |
 
@@ -102,7 +103,7 @@ RaindropsTest >> test05_TheSoundFor6IsPlingAsItHasAFactor3 [
 	self assert: result equals: 'Pling'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test06_2ToThePower3DoesNotMakeARaindropSoundAs3IsTheExponentNotTheBase [
 	| result |
 
@@ -110,7 +111,7 @@ RaindropsTest >> test06_2ToThePower3DoesNotMakeARaindropSoundAs3IsTheExponentNot
 	self assert: result equals: '8'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test07_TheSoundFor9IsPlingAsItHasAFactor3 [
 	| result |
 
@@ -118,7 +119,7 @@ RaindropsTest >> test07_TheSoundFor9IsPlingAsItHasAFactor3 [
 	self assert: result equals: 'Pling'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test08_TheSoundFor10IsPlangAsItHasAFactor5 [
 	| result |
 
@@ -126,7 +127,7 @@ RaindropsTest >> test08_TheSoundFor10IsPlangAsItHasAFactor5 [
 	self assert: result equals: 'Plang'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test09_TheSoundFor14IsPlongAsItHasAFactorOf7 [
 	| result |
 
@@ -134,7 +135,7 @@ RaindropsTest >> test09_TheSoundFor14IsPlongAsItHasAFactorOf7 [
 	self assert: result equals: 'Plong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test10_TheSoundFor15IsPlingPlangAsItHasFactors3And5 [
 	| result |
 
@@ -142,7 +143,7 @@ RaindropsTest >> test10_TheSoundFor15IsPlingPlangAsItHasFactors3And5 [
 	self assert: result equals: 'PlingPlang'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test11_TheSoundFor21IsPlingPlongAsItHasFactors3And7 [
 	| result |
 
@@ -150,7 +151,7 @@ RaindropsTest >> test11_TheSoundFor21IsPlingPlongAsItHasFactors3And7 [
 	self assert: result equals: 'PlingPlong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test12_TheSoundFor25IsPlangAsItHasAFactor5 [
 	| result |
 
@@ -158,7 +159,7 @@ RaindropsTest >> test12_TheSoundFor25IsPlangAsItHasAFactor5 [
 	self assert: result equals: 'Plang'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test13_TheSoundFor27IsPlingAsItHasAFactor3 [
 	| result |
 
@@ -166,7 +167,7 @@ RaindropsTest >> test13_TheSoundFor27IsPlingAsItHasAFactor3 [
 	self assert: result equals: 'Pling'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test14_TheSoundFor35IsPlangPlongAsItHasFactors5And7 [
 	| result |
 
@@ -174,7 +175,7 @@ RaindropsTest >> test14_TheSoundFor35IsPlangPlongAsItHasFactors5And7 [
 	self assert: result equals: 'PlangPlong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test15_TheSoundFor49IsPlongAsItHasAFactor7 [
 	| result |
 
@@ -182,7 +183,7 @@ RaindropsTest >> test15_TheSoundFor49IsPlongAsItHasAFactor7 [
 	self assert: result equals: 'Plong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test16_TheSoundFor52Is52 [
 	| result |
 
@@ -190,7 +191,7 @@ RaindropsTest >> test16_TheSoundFor52Is52 [
 	self assert: result equals: '52'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test17_TheSoundFor105IsPlingPlangPlongAsItHasFactors35And7 [
 	| result |
 
@@ -198,7 +199,7 @@ RaindropsTest >> test17_TheSoundFor105IsPlingPlangPlongAsItHasFactors35And7 [
 	self assert: result equals: 'PlingPlangPlong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 RaindropsTest >> test18_TheSoundFor3125IsPlangAsItHasAFactor5 [
 	| result |
 

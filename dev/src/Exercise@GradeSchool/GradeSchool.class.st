@@ -26,7 +26,7 @@ GradeSchool >> addStudents: xs [
 		sort: [ :a :b | a last <= b last ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'math functions' }
 GradeSchool >> desiredGrade: n [
 	^ students select: [ :student | student last = n ] thenCollect: [ :student | student first ]
 ]
