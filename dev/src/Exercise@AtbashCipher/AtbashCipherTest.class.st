@@ -35,15 +35,16 @@ This is a fun little exercise, just follow the tests.
 
 "
 Class {
-	#name : #AtbashCipherTest,
-	#superclass : #ExercismTest,
+	#name : 'AtbashCipherTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'atbashCipherCalculator'
 	],
-	#category : #'Exercise@AtbashCipher'
+	#category : 'Exercise@AtbashCipher',
+	#package : 'Exercise@AtbashCipher'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 AtbashCipherTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -54,25 +55,25 @@ AtbashCipherTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AtbashCipherTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'c728b116-9d41-0d00-8fd2-aa8a08866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 AtbashCipherTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 AtbashCipherTest >> setUp [
 	super setUp.
 	atbashCipherCalculator := AtbashCipher new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test01_EncodeEncodeYes [
 	| result |
 
@@ -80,7 +81,7 @@ AtbashCipherTest >> test01_EncodeEncodeYes [
 	self assert: result equals: 'bvh'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test02_EncodeEncodeNo [
 	| result |
 
@@ -88,7 +89,7 @@ AtbashCipherTest >> test02_EncodeEncodeNo [
 	self assert: result equals: 'ml'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test03_EncodeEncodeOMG [
 	| result |
 
@@ -96,7 +97,7 @@ AtbashCipherTest >> test03_EncodeEncodeOMG [
 	self assert: result equals: 'lnt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test04_EncodeEncodeSpaces [
 	| result |
 
@@ -104,7 +105,7 @@ AtbashCipherTest >> test04_EncodeEncodeSpaces [
 	self assert: result equals: 'lnt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test05_EncodeEncodeMindblowingly [
 	| result |
 
@@ -112,7 +113,7 @@ AtbashCipherTest >> test05_EncodeEncodeMindblowingly [
 	self assert: result equals: 'nrmwy oldrm tob'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test06_EncodeEncodeNumbers [
 	| result |
 
@@ -120,7 +121,7 @@ AtbashCipherTest >> test06_EncodeEncodeNumbers [
 	self assert: result equals: 'gvhgr mt123 gvhgr mt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test07_EncodeEncodeDeepThought [
 	| result |
 
@@ -128,7 +129,7 @@ AtbashCipherTest >> test07_EncodeEncodeDeepThought [
 	self assert: result equals: 'gifgs rhurx grlm'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test08_EncodeEncodeAllTheLetters [
 	| result |
 
@@ -136,7 +137,7 @@ AtbashCipherTest >> test08_EncodeEncodeAllTheLetters [
 	self assert: result equals: 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test09_DecodeDecodeExercism [
 	| result |
 
@@ -144,7 +145,7 @@ AtbashCipherTest >> test09_DecodeDecodeExercism [
 	self assert: result equals: 'exercism'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test10_DecodeDecodeASentence [
 	| result |
 
@@ -152,7 +153,7 @@ AtbashCipherTest >> test10_DecodeDecodeASentence [
 	self assert: result equals: 'anobstacleisoftenasteppingstone'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test11_DecodeDecodeNumbers [
 	| result |
 
@@ -160,7 +161,7 @@ AtbashCipherTest >> test11_DecodeDecodeNumbers [
 	self assert: result equals: 'testing123testing'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test12_DecodeDecodeAllTheLetters [
 	| result |
 
@@ -168,7 +169,7 @@ AtbashCipherTest >> test12_DecodeDecodeAllTheLetters [
 	self assert: result equals: 'thequickbrownfoxjumpsoverthelazydog'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test13_DecodeDecodeWithTooManySpaces [
 	| result |
 
@@ -176,7 +177,7 @@ AtbashCipherTest >> test13_DecodeDecodeWithTooManySpaces [
 	self assert: result equals: 'exercism'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AtbashCipherTest >> test14_DecodeDecodeWithNoSpaces [
 	| result |
 
