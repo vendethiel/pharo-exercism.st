@@ -35,15 +35,16 @@ The Integer class has a bit manipulation protocol which may be useful.
 
 "
 Class {
-	#name : #SecretHandshakeTest,
-	#superclass : #ExercismTest,
+	#name : 'SecretHandshakeTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'secretHandshakeCalculator'
 	],
-	#category : #'Exercise@SecretHandshake'
+	#category : 'Exercise@SecretHandshake',
+	#package : 'Exercise@SecretHandshake'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 SecretHandshakeTest class >> exercise [
 	^ (self createExerciseAfter: IsogramTest)
 		isCore: false;
@@ -52,25 +53,25 @@ SecretHandshakeTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SecretHandshakeTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'2020ac16-9d41-0d00-8fcd-fe0908866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 SecretHandshakeTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SecretHandshakeTest >> setUp [
 	super setUp.
 	secretHandshakeCalculator := SecretHandshake new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test01_CreateAHandshakeForANumberWinkFor1 [
 	| result |
 
@@ -78,7 +79,7 @@ SecretHandshakeTest >> test01_CreateAHandshakeForANumberWinkFor1 [
 	self assert: result equals: #('wink' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test02_CreateAHandshakeForANumberDoubleBlinkFor10 [
 	| result |
 
@@ -86,7 +87,7 @@ SecretHandshakeTest >> test02_CreateAHandshakeForANumberDoubleBlinkFor10 [
 	self assert: result equals: #('double blink' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test03_CreateAHandshakeForANumberCloseYourEyesFor100 [
 	| result |
 
@@ -94,7 +95,7 @@ SecretHandshakeTest >> test03_CreateAHandshakeForANumberCloseYourEyesFor100 [
 	self assert: result equals: #('close your eyes' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test04_CreateAHandshakeForANumberJumpFor1000 [
 	| result |
 
@@ -102,7 +103,7 @@ SecretHandshakeTest >> test04_CreateAHandshakeForANumberJumpFor1000 [
 	self assert: result equals: #('jump' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test05_CreateAHandshakeForANumberCombineTwoActions [
 	| result |
 
@@ -110,7 +111,7 @@ SecretHandshakeTest >> test05_CreateAHandshakeForANumberCombineTwoActions [
 	self assert: result equals: #('wink' 'double blink' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test06_CreateAHandshakeForANumberReverseTwoActions [
 	| result |
 
@@ -118,7 +119,7 @@ SecretHandshakeTest >> test06_CreateAHandshakeForANumberReverseTwoActions [
 	self assert: result equals: #('double blink' 'wink' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test07_CreateAHandshakeForANumberReversingOneActionGivesTheSameAction [
 	| result |
 
@@ -126,7 +127,7 @@ SecretHandshakeTest >> test07_CreateAHandshakeForANumberReversingOneActionGivesT
 	self assert: result equals: #('jump' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test08_CreateAHandshakeForANumberReversingNoActionsStillGivesNoActions [
 	| result |
 
@@ -134,7 +135,7 @@ SecretHandshakeTest >> test08_CreateAHandshakeForANumberReversingNoActionsStillG
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test09_CreateAHandshakeForANumberAllPossibleActions [
 	| result |
 
@@ -142,7 +143,7 @@ SecretHandshakeTest >> test09_CreateAHandshakeForANumberAllPossibleActions [
 	self assert: result equals: #('wink' 'double blink' 'close your eyes' 'jump' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test10_CreateAHandshakeForANumberReverseAllPossibleActions [
 	| result |
 
@@ -150,7 +151,7 @@ SecretHandshakeTest >> test10_CreateAHandshakeForANumberReverseAllPossibleAction
 	self assert: result equals: #('jump' 'close your eyes' 'double blink' 'wink' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SecretHandshakeTest >> test11_CreateAHandshakeForANumberDoNothingForZero [
 	| result |
 

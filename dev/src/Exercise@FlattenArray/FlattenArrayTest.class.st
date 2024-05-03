@@ -13,18 +13,19 @@ output: [1,2,3,4,5]
 
 ## Hint
 
-Pharo's extensive class library makes the simplest solution `aCollection flattened select: #isNotNil` too trivial to gain much value.  A better challenge is to derive your own from reviewing how the existing is implemented.  You might discard `nil` before putting items into a standard `WriteStream`, or possibly subclass `WriteStream` to discard `nil` items when they are put into the stream, and use that in your solution instead.
+Without using the built-in flattening method, you can derive your own, but you will need to differentiate between what is a collection and what is not. Alternatively, if you decide to use the built-in flattening methods, you will need to create a new Stream type to override incorrect behaviour.
 "
 Class {
-	#name : #FlattenArrayTest,
-	#superclass : #ExercismTest,
+	#name : 'FlattenArrayTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'flattenArrayCalculator'
 	],
-	#category : #'Exercise@FlattenArray'
+	#category : 'Exercise@FlattenArray',
+	#package : 'Exercise@FlattenArray'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 FlattenArrayTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -35,25 +36,30 @@ FlattenArrayTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
+FlattenArrayTest class >> solutionClasses [ 
+ ^{FlattenArray. FlattenArray2}
+]
+
+{ #category : 'config' }
 FlattenArrayTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'aa15f716-9d41-0d00-9006-3c7208866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 FlattenArrayTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.2.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 FlattenArrayTest >> setUp [
 	super setUp.
 	flattenArrayCalculator := FlattenArray new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test01_NoNesting [
 	| result |
 
@@ -61,7 +67,7 @@ FlattenArrayTest >> test01_NoNesting [
 	self assert: result equals: #(0 1 2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test02_FlattensArrayWithJustIntegersPresent [
 	| result |
 
@@ -69,7 +75,7 @@ FlattenArrayTest >> test02_FlattensArrayWithJustIntegersPresent [
 	self assert: result equals: #(1 2 3 4 5 6 7 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test03_5LevelNesting [
 	| result |
 
@@ -77,7 +83,7 @@ FlattenArrayTest >> test03_5LevelNesting [
 	self assert: result equals: #(0 2 2 3 8 100 4 50  -2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test04_6LevelNesting [
 	| result |
 
@@ -85,7 +91,7 @@ FlattenArrayTest >> test04_6LevelNesting [
 	self assert: result equals: #(1 2 3 4 5 6 7 8 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test05_6LevelNestListWithNullValues [
 	| result |
 
@@ -93,7 +99,7 @@ FlattenArrayTest >> test05_6LevelNestListWithNullValues [
 	self assert: result equals: #(0 2 2 3 8 100  -2 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 FlattenArrayTest >> test06_AllValuesInNestedListAreNull [
 	| result |
 

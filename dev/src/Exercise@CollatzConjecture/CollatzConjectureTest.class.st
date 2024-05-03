@@ -33,15 +33,16 @@ This is nicely suited for recursion
 
 "
 Class {
-	#name : #CollatzConjectureTest,
-	#superclass : #ExercismTest,
+	#name : 'CollatzConjectureTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'collatzConjectureCalculator'
 	],
-	#category : #'Exercise@CollatzConjecture'
+	#category : 'Exercise@CollatzConjecture',
+	#package : 'Exercise@CollatzConjecture'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 CollatzConjectureTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 
@@ -53,32 +54,32 @@ CollatzConjectureTest class >> exercise [
 		yourself
 ]
 
-{ #category : #generator }
+{ #category : 'generator' }
 CollatzConjectureTest class >> generator [
 	"Potential generator hints"
 	
 	^ {('@stepsNumber:' -> #stepsFrom:)}
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CollatzConjectureTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'0dc70bf9-e642-0d00-8e2f-4d97059054ed'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 CollatzConjectureTest class >> version [
 	"Generated from specification: 14 April 2019"
 	^'1.2.1'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 CollatzConjectureTest >> setUp [
 	super setUp.
 	collatzConjectureCalculator := CollatzConjecture new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test01_ZeroStepsForOne [
 	| result |
 
@@ -86,7 +87,7 @@ CollatzConjectureTest >> test01_ZeroStepsForOne [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test02_DivideIfEven [
 	| result |
 
@@ -94,7 +95,7 @@ CollatzConjectureTest >> test02_DivideIfEven [
 	self assert: result equals: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test03_EvenAndOddSteps [
 	| result |
 
@@ -102,7 +103,7 @@ CollatzConjectureTest >> test03_EvenAndOddSteps [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test04_LargeNumberOfEvenAndOddSteps [
 	| result |
 	
@@ -110,7 +111,7 @@ CollatzConjectureTest >> test04_LargeNumberOfEvenAndOddSteps [
 	self assert: result equals: 152
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test05_ZeroIsAnError [
 	| result |
 
@@ -121,7 +122,7 @@ CollatzConjectureTest >> test05_ZeroIsAnError [
 		description: 'Should get an error with the correct description'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollatzConjectureTest >> test06_NegativeValueIsAnError [
 	| result |
 

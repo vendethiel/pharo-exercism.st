@@ -1,47 +1,36 @@
 "
-As the output is symetrical, you only have to generate the top half and then mirror it reversed.
-
+Diamond display
 "
 Class {
-	#name : #Diamond,
-	#superclass : #Object,
-	#category : #'Exercise@Diamond'
+	#name : 'Diamond',
+	#superclass : 'Object',
+	#category : 'Exercise@Diamond',
+	#package : 'Exercise@Diamond'
 }
 
-{ #category : #formatting }
-Diamond >> makeRow: char baseChar: baseChar [
-	| maxValue letterValue halfRow |
-
-	maxValue := baseChar asInteger - $A asInteger + 1.
-	letterValue := char asInteger - $A asInteger + 1.
-	halfRow := String streamContents: [ :stream |
-		stream
-		 << (self paddingSpaces: maxValue - 1 - (letterValue - 1))
-		 << char
-		 << (self paddingSpaces: letterValue - 1) ].
-	^ halfRow , halfRow allButLast reversed
+{ #category : 'string-manipulation' }
+Diamond >> midSpaceFor: i [
+	^ ((i - 1) * 2) - 1
 ]
 
-{ #category : #formatting }
-Diamond >> paddingSpaces: anInteger [
-	^ anInteger isZero
-		ifTrue: [ '' ]
-		ifFalse: [ String new: anInteger withAll: Character space ]
+{ #category : 'string-manipulation' }
+Diamond >> mirror: xs [
+	^ xs,xs allButLast reverse
 ]
 
-{ #category : #formatting }
-Diamond >> rowsLetter: aString [
-	| baseChar topHalf fullGrid |
-
-	aString size isZero ifTrue: [ ^ #() ].
-	
-	baseChar := aString first.
-	baseChar = $A ifTrue: [ ^ {aString} ].
-	
-	topHalf := OrderedCollection new.
-	topHalf addAll: (($A to: baseChar)
-		collect: [ :char | self makeRow: char baseChar: baseChar ]).
-
-	fullGrid := topHalf , topHalf allButLast reverse.
-	^ fullGrid asArray
+{ #category : 'string-manipulation' }
+Diamond >> rowsLetter: l [
+	|range idx xs|
+	range := $A to: $Z.
+	idx := range indexOf: l first.
+	xs := (1 to: idx) with: (range first: idx) collect: [ :i :e |
+		|c sp mid|
+		c := e asString.
+		sp := ' ' repeat: idx - i.
+		mid := i > 1
+			ifTrue: [ c, (' ' repeat: (self midSpaceFor: i)) ]
+			ifFalse: [ '' ].
+		sp,mid,c,sp
+	].
+	^ self mirror: xs
 ]

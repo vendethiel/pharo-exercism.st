@@ -1,48 +1,39 @@
-"
-A simple exercise, of note is how to handle the top three scores - ideally you can sort and then take the min of 3 and the score list size, but there are equally other options.
-"
 Class {
-	#name : #HighScores,
-	#superclass : #Object,
+	#name : 'HighScores',
+	#superclass : 'Object',
 	#instVars : [
 		'scores'
 	],
-	#category : #'Exercise@HighScores'
+	#category : 'Exercise@HighScores',
+	#package : 'Exercise@HighScores'
 }
 
-{ #category : #exercism }
-HighScores >> addScores: aCollection [
-
-	scores addAll: aCollection
+{ #category : 'adding' }
+HighScores >> addScores: newScores [ 
+	scores addAll: newScores
 ]
 
-{ #category : #initialization }
-HighScores >> initialize [ 
-	
-	super initialize.
-	scores := OrderedCollection new.
+{ #category : 'initialization' }
+HighScores >> initialize [
+	scores := OrderedCollection new
 ]
 
-{ #category : #exercism }
+{ #category : 'arrays' }
 HighScores >> latestScore [
-	
 	^ scores last
 ]
 
-{ #category : #exercism }
+{ #category : 'as yet unclassified' }
 HighScores >> personalBestScores [
-	
 	^ scores max
 ]
 
-{ #category : #exercism }
+{ #category : 'arrays' }
 HighScores >> personalTopThreeScores [
-	^ (scores asSortedCollection: [ :a :b | a > b ]) asArray
-			first: (3 min: scores size)
+	^ (scores sorted reverse first: (3 min: scores size)) asArray
 ]
 
-{ #category : #exercism }
+{ #category : 'accessing' }
 HighScores >> scores [
-	
 	^ scores asArray
 ]

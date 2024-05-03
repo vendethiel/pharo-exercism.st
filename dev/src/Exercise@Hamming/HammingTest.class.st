@@ -30,15 +30,16 @@ In Smalltalk, exceptions are instances of subclasses of Exception. While you can
 
 "
 Class {
-	#name : #HammingTest,
-	#superclass : #ExercismTest,
+	#name : 'HammingTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'hammingCalculator'
 	],
-	#category : #'Exercise@Hamming'
+	#category : 'Exercise@Hamming',
+	#package : 'Exercise@Hamming'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 HammingTest class >> exercise [
 	^(self createExerciseAfter: ReverseStringTest)
 		isCore: false;
@@ -47,25 +48,25 @@ HammingTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HammingTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'69f615da-2b3f-0d00-a2ed-aca409f0590c'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 HammingTest class >> version [
 	"Generated from specification: 26 February 2019"
 	^'2.3.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 HammingTest >> setUp [
 	super setUp.
 	hammingCalculator := Hamming new
 ]
 
-{ #category : #test }
+{ #category : 'test' }
 HammingTest >> should: aBlock raise: anException containing: aMessageString [
 
 	self
@@ -77,7 +78,7 @@ HammingTest >> should: aBlock raise: anException containing: aMessageString [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test01_EmptyStrands [
 	| result |
 
@@ -85,7 +86,7 @@ HammingTest >> test01_EmptyStrands [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test02_SingleLetterIdenticalStrands [
 	| result |
 
@@ -93,7 +94,7 @@ HammingTest >> test02_SingleLetterIdenticalStrands [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test03_SingleLetterDifferentStrands [
 	| result |
 
@@ -101,7 +102,7 @@ HammingTest >> test03_SingleLetterDifferentStrands [
 	self assert: result equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test04_LongIdenticalStrands [
 	| result |
 
@@ -109,7 +110,7 @@ HammingTest >> test04_LongIdenticalStrands [
 	self assert: result equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test05_LongDifferentStrands [
 	| result |
 
@@ -117,7 +118,7 @@ HammingTest >> test05_LongDifferentStrands [
 	self assert: result equals: 9
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test06_DisallowFirstStrandLonger [
 
 	self
@@ -126,7 +127,7 @@ HammingTest >> test06_DisallowFirstStrandLonger [
 		containing: 'left and right strands must be of equal length'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test07_DisallowSecondStrandLonger [
 
 	self
@@ -135,7 +136,7 @@ HammingTest >> test07_DisallowSecondStrandLonger [
 		containing: 'left and right strands must be of equal length'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test08_DisallowLeftEmptyStrand [
 
 	self
@@ -144,7 +145,7 @@ HammingTest >> test08_DisallowLeftEmptyStrand [
 		containing: 'left strand must not be empty'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 HammingTest >> test09_DisallowRightEmptyStrand [
 
 	self

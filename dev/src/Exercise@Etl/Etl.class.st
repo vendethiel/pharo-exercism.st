@@ -1,3 +1,6 @@
+"
+ETL transformations
+"
 Class {
 	#name : 'Etl',
 	#superclass : 'Object',
@@ -6,6 +9,11 @@ Class {
 }
 
 { #category : 'transformation' }
-Etl >> transformData: aCollection [ 
-	self shouldBeImplemented.
+Etl >> transformData: mapping [
+	|dict|
+	dict := Dictionary new.
+	mapping keysAndValuesDo: [ :k :xs |
+		xs do: [ :x | dict at: x asLowercase put: k asNumber ]
+	].
+	^dict
 ]

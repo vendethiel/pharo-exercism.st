@@ -1,17 +1,22 @@
 "
-Using the often maligned Bag datatype, makes this exercise quite easy
+Anagram checker
 "
 Class {
-	#name : #Anagram,
-	#superclass : #Object,
-	#category : #'Exercise@Anagram'
+	#name : 'Anagram',
+	#superclass : 'Object',
+	#category : 'Exercise@Anagram',
+	#package : 'Exercise@Anagram'
 }
 
-{ #category : #exercism }
-Anagram >> findAnagramsCandidates: aCollectionOfWords subject: aString [
-	| letterBag |
-	letterBag := aString asLowercase asBag.
-	^ aCollectionOfWords
-		reject:
-			[ :word | (word sameAs: aString) or: [ word asLowercase asBag ~= letterBag ] ]
+{ #category : 'strings' }
+Anagram >> findAnagramsCandidates: xs subject: s [ 
+	|lowers clean|
+	lowers := s onlyLetters asLowercase.
+	clean := lowers sorted.
+	^ xs select: [ :x |
+		|lowerx|
+		lowerx := x onlyLetters asLowercase.
+		Transcript cr ; show: lowerx; show: lowers.
+		(lowers ~= lowerx) & (lowerx sort = clean)
+	].
 ]
