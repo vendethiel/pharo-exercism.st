@@ -1,3 +1,6 @@
+"
+Atbash Cipher
+"
 Class {
 	#name : 'AtbashCipher',
 	#superclass : 'Object',
