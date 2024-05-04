@@ -16,7 +16,6 @@ Anagram >> findAnagramsCandidates: xs subject: s [
 	^ xs select: [ :x |
 		|lowerx|
 		lowerx := x onlyLetters asLowercase.
-		Transcript cr ; show: lowerx; show: lowers.
 		(lowers ~= lowerx) & (lowerx sort = clean)
 	].
 ]
