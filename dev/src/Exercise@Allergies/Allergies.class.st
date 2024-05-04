@@ -27,6 +27,7 @@ Allergies class >> initialize [
 
 { #category : 'accessing' }
 Allergies class >> mapping [
+	mapping ifNil: [ ^self initialize ].
   ^ mapping
 ]
 

@@ -1,3 +1,6 @@
+"
+Leap Year calculator
+"
 Class {
 	#name : 'Leap',
 	#superclass : 'Object',

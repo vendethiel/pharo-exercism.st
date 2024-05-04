@@ -1,3 +1,6 @@
+"
+High scorer
+"
 Class {
 	#name : 'HighScores',
 	#superclass : 'Object',
@@ -23,7 +26,7 @@ HighScores >> latestScore [
 	^ scores last
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 HighScores >> personalBestScores [
 	^ scores max
 ]

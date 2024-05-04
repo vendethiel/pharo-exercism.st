@@ -1,3 +1,6 @@
+"
+Isogram
+"
 Class {
 	#name : 'Isogram',
 	#superclass : 'Object',
@@ -7,10 +10,7 @@ Class {
 
 { #category : 'testing' }
 Isogram >> isIsogramPhrase: str [ 
-	|seen|
-	seen := Set new.
-	str asLowercase onlyLetters do: [:c |
-		seen addIfNotPresent: c ifPresentDo: [ ^ false ]
-	].
-	^ true
+	|clean|
+	clean := str asLowercase onlyLetters.
+	^ clean asSet size = clean size
 ]

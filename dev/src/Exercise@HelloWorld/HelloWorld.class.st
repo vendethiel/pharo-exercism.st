@@ -1,3 +1,6 @@
+"
+Hello World!
+"
 Class {
 	#name : 'HelloWorld',
 	#superclass : 'Object',

@@ -1,3 +1,6 @@
+"
+hamming distance
+"
 Class {
 	#name : 'Hamming',
 	#superclass : 'Object',

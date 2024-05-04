@@ -20,7 +20,7 @@ Matrix >> input: str atRow: row [
 
 { #category : 'parsing' }
 Matrix >> line: line [
-	^ (line findTokens: ' ') asArray collect: [ :i | i asNumber ]
+	^ (line findTokens: ' ') asArray collect: #asNumber
 ]
 
 { #category : 'parsing' }

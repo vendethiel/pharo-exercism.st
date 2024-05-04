@@ -32,6 +32,7 @@ ForthInterpreter class >> initialize [
 
 { #category : 'accessing' }
 ForthInterpreter class >> mapping [
+	mapping ifNil: [ ^self initialize ].
 	^ mapping
 ]
 

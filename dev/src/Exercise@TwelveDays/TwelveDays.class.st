@@ -39,5 +39,8 @@ TwelveDays >> reciteStartVerse: start endVerse: end [
 TwelveDays >> verse: idx [
 	| gifts |
 	gifts := (self class verses takeFirst: idx - 1) reversed joinUsing: ', ' last: ', and '.
-	^ 'On the ' , (self class ordinal: (idx - 1)) , ' day of Christmas my true love gave to me: ' , gifts , '.'
+	^ 'On the {1} day of Christmas my true love gave to me: {2}.' format: {
+		(self class ordinal: (idx - 1)).
+		gifts
+	}
 ]

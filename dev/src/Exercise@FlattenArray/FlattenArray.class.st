@@ -1,3 +1,6 @@
+"
+Array flattener
+"
 Class {
 	#name : 'FlattenArray',
 	#superclass : 'Object',

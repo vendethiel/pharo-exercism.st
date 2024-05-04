@@ -32,12 +32,21 @@ Clock >> - m [
 
 { #category : 'comparing' }
 Clock >> = o [
+	self == o ifTrue: [ ^true ].
 	^ (self hour = o hour) & (self minute = o minute)
 ]
 
 { #category : 'converting' }
 Clock >> asString [
-	^ hour asTwoCharacterString , ':', minute asTwoCharacterString
+	^ '{1}:{2}' format: {
+		hour asTwoCharacterString.
+		minute asTwoCharacterString.
+	}
+]
+
+{ #category : 'comparing' }
+Clock >> hash [
+	^minute hash bitXor: hour hash
 ]
 
 { #category : 'accessing' }

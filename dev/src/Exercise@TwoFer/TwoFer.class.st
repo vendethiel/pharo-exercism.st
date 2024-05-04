@@ -1,3 +1,6 @@
+"
+two-fer'
+"
 Class {
 	#name : 'TwoFer',
 	#superclass : 'Object',
@@ -5,12 +8,12 @@ Class {
 	#package : 'Exercise@TwoFer'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'string-manipulation' }
 TwoFer >> who [
-    ^ 'One for you, one for me.'
+    ^ self who: 'you'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'string-manipulation' }
 TwoFer >> who: name [
-    ^ 'One for ', name, ', one for me.'
+    ^ 'One for {1}, one for me.' format: { name }
 ]

@@ -28,7 +28,7 @@ GradeSchool >> addStudents: xs [
 
 { #category : 'math functions' }
 GradeSchool >> desiredGrade: n [
-	^ students select: [ :student | student last = n ] thenCollect: [ :student | student first ]
+	^ students select: [ :student | student last = n ] thenCollect: #first
 ]
 
 { #category : 'initialization' }
@@ -38,5 +38,5 @@ GradeSchool >> initialize [
 
 { #category : 'accessing' }
 GradeSchool >> roster [
-	^ students asArray collect: [ :student | student first ]
+	^ students asArray collect: #first
 ]

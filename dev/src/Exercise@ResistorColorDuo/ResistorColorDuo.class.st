@@ -29,6 +29,7 @@ ResistorColorDuo class >> initialize [
 
 { #category : 'accessing' }
 ResistorColorDuo class >> mapping [
+	mapping ifNil: [ ^self initialize ].
 	^ mapping
 ]
 

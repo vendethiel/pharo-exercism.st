@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : 'encryption' }
+AtbashCipher >> decodePhrase: cyphered [
+	^ (cyphered copyWithout: Character space) collect: #atbashShift
+]
+
+{ #category : 'encryption' }
 AtbashCipher >> encodePhrase: cypher [
-	^ cypher onlyLetters asLowercase collect: [ :l | l atbashShift ]
+	^ ' ' join: (((cypher select: #isAlphaNumeric) groupsOf: 5) collect: [:grp | grp asLowercase collect: #atbashShift as: String])
 ]

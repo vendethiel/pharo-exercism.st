@@ -21,6 +21,7 @@ BracketMatcher class >> initialize [
 
 { #category : 'accessing' }
 BracketMatcher class >> mapping [
+	mapping ifNil: [ ^self initialize ].
 	^ mapping
 ]
 

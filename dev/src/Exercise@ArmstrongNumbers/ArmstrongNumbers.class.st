@@ -15,7 +15,8 @@ ArmstrongNumbers >> digits: n [
 
 { #category : 'testing' }
 ArmstrongNumbers >> isArmstrongNumber: n [ 
-	|digits|
+	|digits size |
 	digits := self digits: n.
-	^ (digits collect: [ :x | x ** digits size ]) sum = n
+	size := digits size.
+	^ (digits collect: [ :x | x ** size ]) sum = n
 ]
