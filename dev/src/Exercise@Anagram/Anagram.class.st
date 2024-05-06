@@ -10,12 +10,12 @@ Class {
 
 { #category : 'strings' }
 Anagram >> findAnagramsCandidates: xs subject: s [ 
-	|lowers clean|
-	lowers := s onlyLetters asLowercase.
-	clean := lowers sorted.
+	|sclean sbag|
+	sclean := s onlyLetters asLowercase.
+	sbag := sclean asBag.
 	^ xs select: [ :x |
-		|lowerx|
-		lowerx := x onlyLetters asLowercase.
-		(lowers ~= lowerx) & (lowerx sort = clean)
+		|xclean|
+		xclean := x onlyLetters asLowercase.
+		(xclean ~= sclean) & (xclean asBag = sbag)
 	].
 ]
