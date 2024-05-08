@@ -1,3 +1,6 @@
+"
+Direction data
+"
 Class {
 	#name : 'Direction',
 	#superclass : 'Object',
@@ -17,16 +20,21 @@ Class {
 
 { #category : 'instance creation' }
 Direction class >> fromString: name [
-	mappings at: name
+	^ mappings at: name
 ]
 
 { #category : 'accessing' }
 Direction class >> initialize [
 	|north east south west|
-	north := self new name: 'north'; offsetX: 0; offsetY: 1; left: 'west'; right: 'east'.
-	east := self new name: 'east'; offsetX: 1; offsetY: 0; left: 'north'; right: 'south'.
-	south := self new name: 'south'; offsetX: 0; offsetY: -1; left: 'east'; right: 'west'.
-	west := self new name: 'west'; offsetX: -1; offsetY: 0; left: 'south'; right: 'north'.
+	north := self new name: 'north'; offsetX: 0; offsetY: 1.
+	east := self new name: 'east'; offsetX: 1; offsetY: 0.
+	south := self new name: 'south'; offsetX: 0; offsetY: -1.
+	west := self new name: 'west'; offsetX: -1; offsetY: 0.
+	
+	north left: west; right: east.
+	east left: north; right: south.
+	south left: east; right: west.
+	west left: south; right: north.
 
 	mappings := { 'north' -> north. 'east' -> east. 'south' -> south. 'west' -> west } asDictionary
 ]
@@ -35,6 +43,11 @@ Direction class >> initialize [
 Direction class >> mappings [
 	mappings ifNil: [ self initialize ].
 	^ mappings
+]
+
+{ #category : 'accessing' }
+Direction >> left [
+	^ left
 ]
 
 { #category : 'accessing' }
@@ -53,13 +66,28 @@ Direction >> name: aString [
 ]
 
 { #category : 'accessing' }
+Direction >> offsetX [
+	^ offsetX
+]
+
+{ #category : 'accessing' }
 Direction >> offsetX: anInteger [ 
 	offsetX := anInteger
 ]
 
 { #category : 'accessing' }
+Direction >> offsetY [
+	^ offsetY
+]
+
+{ #category : 'accessing' }
 Direction >> offsetY: anInteger [ 
 	offsetY := anInteger
+]
+
+{ #category : 'accessing' }
+Direction >> right [
+	^ right
 ]
 
 { #category : 'accessing' }

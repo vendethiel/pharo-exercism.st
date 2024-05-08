@@ -23,17 +23,18 @@ Robot class >> newFacing: direction atX: x atY: y [
 
 { #category : 'simulation' }
 Robot >> A [
-	^ 0
+	self x: x + direction offsetX.
+	self y: y + direction offsetY.
 ]
 
 { #category : 'simulation' }
 Robot >> L [
-	self direction: direction left
+	self facing: direction left
 ]
 
 { #category : 'simulation' }
 Robot >> R [
-	self direction: direction right
+	self facing: direction right
 ]
 
 { #category : 'perform' }
@@ -46,7 +47,7 @@ Robot >> doInstructed: c [
 
 { #category : 'instance initialization' }
 Robot >> facing: newDir [
-	direction := Direction fromString: newDir.
+	direction := newDir.
 ]
 
 { #category : 'fields description' }

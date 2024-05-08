@@ -18,7 +18,9 @@ RobotSimulator >> sendInstructions: instructions [
 ]
 
 { #category : 'instance creation' }
-RobotSimulator >> startFacing: direction atPosition: position [ 
+RobotSimulator >> startFacing: dir atPosition: position [ 
+	|direction|
+	direction := Direction fromString: dir.
 	robot := Robot newFacing: direction atX: (position at: 'x') atY: (position at: 'y').
 	^ robot synthesis
 ]
