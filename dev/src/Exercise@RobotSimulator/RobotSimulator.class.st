@@ -1,45 +1,24 @@
 "
-A simple solution that seperates the Robot into a new class
+Robot Simulator Starter
 "
 Class {
-	#name : #RobotSimulator,
-	#superclass : #Object,
+	#name : 'RobotSimulator',
+	#superclass : 'Object',
 	#instVars : [
 		'robot'
 	],
-	#category : #'Exercise@RobotSimulator'
+	#category : 'Exercise@RobotSimulator',
+	#package : 'Exercise@RobotSimulator'
 }
 
-{ #category : #internal }
-RobotSimulator >> currentPosition [
-	^self robot asDictionary
+{ #category : 'perform' }
+RobotSimulator >> sendInstructions: instructions [
+	instructions do: [ :i | robot doInstructed: i ].
+	^ robot synthesis.
 ]
 
-{ #category : #accessing }
-RobotSimulator >> robot [
-	^ robot
-]
-
-{ #category : #accessing }
-RobotSimulator >> robot: anObject [
-	robot := anObject
-]
-
-{ #category : #exercism }
-RobotSimulator >> sendInstructions: instructionsString [
-	
-	instructionsString
-		do: [ :instruction | self robot execute: instruction ].
-
-	^ self currentPosition
-]
-
-{ #category : #exercism }
-RobotSimulator >> startFacing: aString atPosition: aDictionary [
-	self robot:
-		((Robot facing: aString)
-			location: (aDictionary at: 'x') @ (aDictionary at: 'y');
-			yourself).
-
-	^ self currentPosition
+{ #category : 'instance creation' }
+RobotSimulator >> startFacing: direction atPosition: position [ 
+	robot := Robot newFacing: direction atX: (position at: 'x') atY: (position at: 'y').
+	^ robot synthesis
 ]

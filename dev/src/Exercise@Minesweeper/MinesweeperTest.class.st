@@ -33,15 +33,16 @@ x,y locations are often represented as a Point, which then leads to some useful 
 
 "
 Class {
-	#name : #MinesweeperTest,
-	#superclass : #ExercismTest,
+	#name : 'MinesweeperTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'minesweeperCalculator'
 	],
-	#category : #'Exercise@Minesweeper'
+	#category : 'Exercise@Minesweeper',
+	#package : 'Exercise@Minesweeper'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 MinesweeperTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -53,25 +54,25 @@ MinesweeperTest class >> exercise [
 	
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MinesweeperTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1318c616-9d41-0d00-8fe3-676108866539'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 MinesweeperTest class >> version [
 	"Generated from specification: 29 March 2019"
 	^'1.1.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MinesweeperTest >> setUp [
 	super setUp.
 	minesweeperCalculator := Minesweeper new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test01_NoRows [
 	| result |
 
@@ -79,7 +80,7 @@ MinesweeperTest >> test01_NoRows [
 	self assert: result equals: #()
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test02_NoColumns [
 	| result |
 
@@ -87,7 +88,7 @@ MinesweeperTest >> test02_NoColumns [
 	self assert: result equals: #('' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test03_NoMines [
 	| result |
 
@@ -95,7 +96,7 @@ MinesweeperTest >> test03_NoMines [
 	self assert: result equals: #('   ' '   ' '   ' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test04_MinefieldWithOnlyMines [
 	| result |
 
@@ -103,7 +104,7 @@ MinesweeperTest >> test04_MinefieldWithOnlyMines [
 	self assert: result equals: #('***' '***' '***' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test05_MineSurroundedBySpaces [
 	| result |
 
@@ -111,7 +112,7 @@ MinesweeperTest >> test05_MineSurroundedBySpaces [
 	self assert: result equals: #('111' '1*1' '111' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test06_SpaceSurroundedByMines [
 	| result |
 
@@ -119,7 +120,7 @@ MinesweeperTest >> test06_SpaceSurroundedByMines [
 	self assert: result equals: #('***' '*8*' '***' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test07_HorizontalLine [
 	| result |
 
@@ -127,7 +128,7 @@ MinesweeperTest >> test07_HorizontalLine [
 	self assert: result equals: #('1*2*1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test08_HorizontalLineMinesAtEdges [
 	| result |
 
@@ -135,7 +136,7 @@ MinesweeperTest >> test08_HorizontalLineMinesAtEdges [
 	self assert: result equals: #('*1 1*' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test09_VerticalLine [
 	| result |
 
@@ -143,7 +144,7 @@ MinesweeperTest >> test09_VerticalLine [
 	self assert: result equals: #('1' '*' '2' '*' '1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test10_VerticalLineMinesAtEdges [
 	| result |
 
@@ -151,7 +152,7 @@ MinesweeperTest >> test10_VerticalLineMinesAtEdges [
 	self assert: result equals: #('*' '1' ' ' '1' '*' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test11_Cross [
 	| result |
 
@@ -159,7 +160,7 @@ MinesweeperTest >> test11_Cross [
 	self assert: result equals: #(' 2*2 ' '25*52' '*****' '25*52' ' 2*2 ' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MinesweeperTest >> test12_LargeMinefield [
 	| result |
 

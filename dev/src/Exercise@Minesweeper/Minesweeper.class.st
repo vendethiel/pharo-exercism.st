@@ -1,29 +1,34 @@
 "
-Mentor notes:
-
-- using the method #eightNeighbors inspires many simplifications, as well as the use of some extension methods (which can work an a basic Array)
-- it is also possible to do something more ""matrix like"" using an Array2D and its row/column manipulations with #at:at:ifInvalid:
+Minesweeper mine counter
 "
 Class {
-	#name : #Minesweeper,
-	#superclass : #Object,
-	#category : #'Exercise@Minesweeper'
+	#name : 'Minesweeper',
+	#superclass : 'Object',
+	#category : 'Exercise@Minesweeper',
+	#package : 'Exercise@Minesweeper'
 }
 
-{ #category : #exercism }
-Minesweeper >> annotateMinefield: aCollection [
-	aCollection ifEmpty: [ ^ aCollection ].
+{ #category : 'mathematical functions' }
+Minesweeper >> annotateMinefield: terrain [
+	|array|
+	"CTArray2D doesn't support #() or #('')"
+	(terrain isEmpty) ifTrue: [ ^terrain ].
+	(terrain first isEmpty) ifTrue: [ ^terrain ].
 
-	^ aCollection
-		withIndexCollect: [ :row :y | 
-			row withIndexCollect: [ :cell :x | 
-					cell = $*
-						ifTrue: [ cell ]
-						ifFalse: [ self neighbourValueIn: aCollection at: (x@y) ] ] ]
-]
-
-{ #category : #exercism }
-Minesweeper >> neighbourValueIn: aCollection at: aPoint [
-	^ (aPoint eightNeighbors sum: [ :p | aCollection mineAt: p ])
-		asMinesweeperChar
+	array := CTArray2D fromRows: (terrain collect: #asArray) pad: $*.
+	array rowsAndColumnsPut: [:row :col |
+		"WTB rowsAndColumnsValuesPut"
+		(array atColumn: col atRow: row) isBomb
+			ifTrue: [ $* ]
+			ifFalse: [
+				|bombs|
+				bombs := (col@row) eightNeighbors count: [ :neighbor |
+					(array at: neighbor ifInvalid: Character space) isBomb
+				].
+				bombs = 0
+					ifTrue: [ Character space ]
+					ifFalse: [ bombs asDigitCharacter ]
+			]
+	].
+	^ array rows collect: [ :row | '' join: row ]
 ]
