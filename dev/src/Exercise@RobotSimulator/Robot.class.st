@@ -26,14 +26,27 @@ Robot >> A [
 	^ 0
 ]
 
+{ #category : 'simulation' }
+Robot >> L [
+	self direction: direction left
+]
+
+{ #category : 'simulation' }
+Robot >> R [
+	self direction: direction right
+]
+
 { #category : 'perform' }
 Robot >> doInstructed: c [
-	self class methodsInProtocol: #simulation
+	self perform:
+		((self class methodsInProtocol: #simulation)
+			detect: [ :method | method selector asString = c asString ]
+		) selector
 ]
 
 { #category : 'instance initialization' }
 Robot >> facing: newDir [
-	direction := newDir.
+	direction := Direction fromString: newDir.
 ]
 
 { #category : 'fields description' }
@@ -44,7 +57,7 @@ Robot >> synthesis [
 		add: ('y'->y);
 		yourself.
 	^ Dictionary new
-		add: ('direction'->direction);
+		add: ('direction'->direction name);
 		add: ('position'->position);
 		yourself
 ]
