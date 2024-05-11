@@ -10,25 +10,26 @@ Class {
 
 { #category : 'mathematical functions' }
 Bowling >> scoreAfterRolling: rolls [
-	|score i|
-	score := 0.
-	i := 1.
-	[ i <= (rolls size min: 20) ] whileTrue: [
-		|roll value|
-		roll := rolls at: i.
-		i := i + 1.
-		value := roll isBowlingStrike
-			ifTrue: [ self strikeAt: i in: rolls ]
-			ifFalse: [ roll ].
-		score := score + roll.
-	].
-	^ score
+	|frames|
+	frames := self splitFrames: rolls.
+	^ (frames collect: #pins) sum
 ]
 
 { #category : 'mathematical functions' }
-Bowling >> strikeAt: i in: rolls [
-	|pts|
-	pts := 10.
-	i <= 20 ifTrue: [ pts := pts + (rolls at: i) + (rolls at: i + 1) ].
-	^ pts
+Bowling >> splitFrames: rolls [
+	^ Array streamContents: [ :out |
+		|i|
+		i := 1.
+		[i <= rolls size] whileTrue: [
+			|roll|
+			roll := rolls at: i.
+			i := i + 1.
+			roll isBowlingStrike
+				ifTrue: [ out put: BowlingFrame strike ]
+				ifFalse: [
+					out put: (BowlingFrame from: roll and: (rolls at: i)).
+					i := i + 1. "skip next"
+				]
+		].
+	]
 ]
