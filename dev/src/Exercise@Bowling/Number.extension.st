@@ -4,3 +4,18 @@ Extension { #name : 'Number' }
 Number >> isBowlingStrike [
 	^ self = 10
 ]
+
+{ #category : '*Exercise@Bowling' }
+Number >> to: n sum: block [
+	|total|
+	total := 0.
+	self to: n do: [ :i |
+		total := total + (block value: i).
+	].
+	^ total.
+]
+
+{ #category : '*Exercise@Bowling' }
+Number >> zeroIfNil [
+	^ self
+]
