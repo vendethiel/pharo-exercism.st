@@ -1,89 +1,43 @@
-"
-I represent circular buffer - a data structure that uses a single, fixed-size buffer as if it were connected end-to-end. I support operations like read, write, overwrite, clear.
-"
 Class {
-	#name : #CircularBuffer,
-	#superclass : #Object,
+	#name : 'CircularBuffer',
+	#superclass : 'Object',
 	#instVars : [
-		'buffer',
+		'data',
 		'capacity'
 	],
-	#category : #'Exercise@CircularBuffer'
+	#category : 'Exercise@CircularBuffer',
+	#package : 'Exercise@CircularBuffer'
 }
 
-{ #category : #private }
-CircularBuffer >> buffer [
-
-	^ buffer
+{ #category : 'accessing' }
+CircularBuffer >> capacity: n [
+	data := OrderedCollection new.
+	capacity := n.
 ]
 
-{ #category : #private }
-CircularBuffer >> buffer: anObject [
-
-	buffer := anObject
-]
-
-{ #category : #private }
-CircularBuffer >> bufferFull [
-
-	^ self buffer size >= self capacity
-]
-
-{ #category : #accessing }
-CircularBuffer >> capacity [
-
-	^ capacity
-]
-
-{ #category : #accessing }
-CircularBuffer >> capacity: anObject [
-
-	capacity := anObject
-]
-
-{ #category : #operations }
+{ #category : 'meta-object-protocol' }
 CircularBuffer >> clear [
-
-	self buffer removeAll
+	data := OrderedCollection new.
 ]
 
-{ #category : #initialization }
-CircularBuffer >> initialize [ 
-
-	super initialize.
-	self buffer: OrderedCollection new
+{ #category : 'testing' }
+CircularBuffer >> isFull [
+	^ data size = capacity
 ]
 
-{ #category : #operations }
-CircularBuffer >> overwrite: aValue [
-
-	self bufferFull ifTrue: [ self buffer removeFirst ].
-	^ self write: aValue
+{ #category : 'writing' }
+CircularBuffer >> overwrite: n [
+	self isFull ifTrue: [ self read ].
+	self write: n
 ]
 
-{ #category : #'error signalling' }
-CircularBuffer >> raiseEmptyBufferOnRead [
-
-	^ Error signal: 'Cannot read from empty buffer!'
-]
-
-{ #category : #'error signalling' }
-CircularBuffer >> raiseFullBufferOnWrite [
-
-	^ Error signal: 'Cannot write to full buffer!'
-]
-
-{ #category : #operations }
+{ #category : 'meta-object-protocol' }
 CircularBuffer >> read [
-
-	self buffer ifEmpty: [ ^ self raiseEmptyBufferOnRead ].
-	^ self buffer removeFirst
-	
+	^ data removeFirst
 ]
 
-{ #category : #operations }
-CircularBuffer >> write: aValue [
-	
-	self bufferFull ifTrue: [ ^ self raiseFullBufferOnWrite ].
-	^ self buffer addLast: aValue.
+{ #category : 'writing' }
+CircularBuffer >> write: n [
+	self isFull ifTrue: [ Error signal: 'too big' ].
+	data add: n
 ]

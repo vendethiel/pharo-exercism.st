@@ -1,88 +1,69 @@
-"
-I represent Simple Cipher, I do simple encoding/decoding based on either supplied or own generated key. I support operations encode, decode with input string parameter. Optionally, key can be passed, based on which encoding/decoding should happen.
-"
 Class {
-	#name : #SimpleCipher,
-	#superclass : #Object,
+	#name : 'SimpleCipher',
+	#superclass : 'Object',
 	#instVars : [
-		'key',
-		'alphabet'
+		'key'
 	],
-	#category : #'Exercise@SimpleCipher'
+	#category : 'Exercise@SimpleCipher',
+	#package : 'Exercise@SimpleCipher'
 }
 
-{ #category : #accessing }
-SimpleCipher >> alphabet [
-	
-	"lowercase alphabet, it is cached since we do not want to create copies for every loop iteration"
-	^ alphabet ifNil: [ alphabet := Character alphabet ]
+{ #category : 'strings' }
+SimpleCipher >> alphabetOffset: c [
+	^ c charCode - $a charCode
 ]
 
-{ #category : #exercism }
-SimpleCipher >> decode: aString [
-	
-	^ aString withIndexCollect: [: char :idx| 
-		self alphabet at: (self decodedIndexOf: char atKeyPosition: idx )
-	]
+{ #category : 'converting' }
+SimpleCipher >> decode: s [
+	^ s collectWithIndex: [ :e :i | self decode: e at: i ]
 ]
 
-{ #category : #exercism }
-SimpleCipher >> decodedIndexOf: aChar atKeyPosition: keyPos [
-	
-		|idx|
-		idx :=  (self alphabet indexOf: aChar) - (self keyDistanceAt: keyPos).
-		idx < 1 ifTrue: [ ^ self alphabet size + idx ].
-		^ idx
+{ #category : 'cipher' }
+SimpleCipher >> decode: char at: idx [
+	|curo keyo|
+	curo := self alphabetOffset: char.
+	keyo := self alphabetOffset: (self keyAt: idx).
+	^ self toLetter: curo - keyo.
 ]
 
-{ #category : #exercism }
-SimpleCipher >> encode: aString [ 
-	
-	^ aString withIndexCollect: [: char :idx| 
-		self alphabet at: (self encodedIndexOf: char atKeyPosition: idx )
-	]
+{ #category : 'converting' }
+SimpleCipher >> encode: s [
+	^ s collectWithIndex: [ :e :i | self encode: e at: i ].
 ]
 
-{ #category : #exercism }
-SimpleCipher >> encodedIndexOf: aChar atKeyPosition: keyPos [
-	
-		|idx| 
-		idx := (self alphabet indexOf: aChar) + (self keyDistanceAt: keyPos).
-		idx > self alphabet size ifTrue: [ ^ idx \\ self alphabet size ].
-		^ idx
+{ #category : 'cipher' }
+SimpleCipher >> encode: char at: idx [
+	|curo keyo|
+	curo := self alphabetOffset: char.
+	keyo := self alphabetOffset: (self keyAt: idx).
+	^ self toLetter: curo + keyo.
 ]
 
-{ #category : #private }
-SimpleCipher >> generateRandomKey [
-
-	| aKey |
-	aKey := String new: 100.
-	1 to: 100 do: [:idx | aKey at: idx put: self alphabet atRandom ].
-	^ aKey
+{ #category : 'accessing' }
+SimpleCipher >> initialize [ 
+	key := 'aaaaaaaaaa'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SimpleCipher >> key [
-
-	^ key ifNil: [ key := self generateRandomKey ]
+	^ key
 ]
 
-{ #category : #accessing }
-SimpleCipher >> key: lowerCaseString [
-
-	key := lowerCaseString
+{ #category : 'accessing' }
+SimpleCipher >> key: aString [ 
+	key := aString
 ]
 
-{ #category : #exercism }
-SimpleCipher >> keyDistanceAt: keyPos [
-		|aPos|
-		"use modulo to wrap index to size of key"
-		aPos := keyPos \\ self key size. 
-		
-		"when current index of encoded/decoded letter is equal to size of key"
-		aPos isZero ifTrue: [ aPos := self key size ]. 
+{ #category : 'accessing' }
+SimpleCipher >> keyAt: nn [
+	|n|
+	n := nn.
+	"dumbest division ever"
+	[ n > key size ] whileTrue: [ n := n - key size ].
+	^ key at: n.
+]
 
-		"returns for how many letters target letter should be shifted"
-		^ (self alphabet indexOf: (self key at: aPos)) - 1
-		
+{ #category : 'cipher' }
+SimpleCipher >> toLetter: n [
+	^ ($a charCode + (n % 26)) asCharacter
 ]

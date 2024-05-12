@@ -11,12 +11,13 @@ It is used in the book: Learning Object-Oriented Programming, Design and TDD wit
 
 "
 Class {
-	#name : #DieTest,
-	#superclass : #ExercismTest,
-	#category : #'Exercise@Die'
+	#name : 'DieTest',
+	#superclass : 'ExercismTest',
+	#category : 'Exercise@Die',
+	#package : 'Exercise@Die'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 DieTest class >> customData [
 	^{ 
 	#blurb -> 'A small DSL for dice rolling'.
@@ -25,7 +26,7 @@ DieTest class >> customData [
 	 } asOrderedDictionary 
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DieTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -38,7 +39,7 @@ DieTest class >> exercise [
 				
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DieTest class >> uuid [
 	"Answer a fixed String, the unique UUID for this exercise so the Exercism platform can identify it.
 	The id should be like: 'b5812b5e-2788-4ea6-b948-bfe54edeb0da' "
@@ -46,27 +47,27 @@ DieTest class >> uuid [
 	^'dbea4db3-5044-0d00-ab77-b35a0c226d01'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 DieTest class >> version [
 	"Answer the exercise version number string this test was derived from"
 	
 	^'0.0.1' 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testCreationIsOk [
 
 	self assert: (Die withFaces: 20) faces equals: 20
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testInitializeIsOk [
 
 	self assert: Die new faces equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testRolling [
 	|d|
 	d := Die new.

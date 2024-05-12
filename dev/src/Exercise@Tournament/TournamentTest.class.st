@@ -74,15 +74,16 @@ It might also be helpfulnto review chapters on Object Oriented thinking, for exa
 
 "
 Class {
-	#name : #TournamentTest,
-	#superclass : #ExercismTest,
+	#name : 'TournamentTest',
+	#superclass : 'ExercismTest',
 	#instVars : [
 		'tournamentCalculator'
 	],
-	#category : #'Exercise@Tournament'
+	#category : 'Exercise@Tournament',
+	#package : 'Exercise@Tournament'
 }
 
-{ #category : #config }
+{ #category : 'config' }
 TournamentTest class >> exercise [
 	"Answer the configured exercise meta data for this exercise, an ExercismExercise"
 	
@@ -93,25 +94,25 @@ TournamentTest class >> exercise [
 		yourself
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TournamentTest class >> uuid [
 	"Answer a unique id for this exercise"
 	^'1109cabb-8040-0d00-810e-7c1b01deb008'
 ]
 
-{ #category : #config }
+{ #category : 'config' }
 TournamentTest class >> version [
 	"Generated from specification: 15 March 2019"
 	^'1.4.0'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TournamentTest >> setUp [
 	super setUp.
 	tournamentCalculator := Tournament new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test01_JustTheHeaderIfNoInput [
 	| result |
 
@@ -119,7 +120,7 @@ TournamentTest >> test01_JustTheHeaderIfNoInput [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test02_AWinIsThreePointsALossIsZeroPoints [
 	| result |
 
@@ -127,7 +128,7 @@ TournamentTest >> test02_AWinIsThreePointsALossIsZeroPoints [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test03_AWinCanAlsoBeExpressedAsALoss [
 	| result |
 
@@ -135,7 +136,7 @@ TournamentTest >> test03_AWinCanAlsoBeExpressedAsALoss [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3' 'Blithering Badgers             |  1 |  0 |  0 |  1 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test04_ADifferentTeamCanWin [
 	| result |
 
@@ -143,7 +144,7 @@ TournamentTest >> test04_ADifferentTeamCanWin [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Blithering Badgers             |  1 |  1 |  0 |  0 |  3' 'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test05_ADrawIsOnePointEach [
 	| result |
 
@@ -151,7 +152,7 @@ TournamentTest >> test05_ADrawIsOnePointEach [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1' 'Blithering Badgers             |  1 |  0 |  1 |  0 |  1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test06_ThereCanBeMoreThanOneMatch [
 	| result |
 
@@ -159,7 +160,7 @@ TournamentTest >> test06_ThereCanBeMoreThanOneMatch [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6' 'Blithering Badgers             |  2 |  0 |  0 |  2 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test07_ThereCanBeMoreThanOneWinner [
 	| result |
 
@@ -167,7 +168,7 @@ TournamentTest >> test07_ThereCanBeMoreThanOneWinner [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3' 'Blithering Badgers             |  2 |  1 |  0 |  1 |  3' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test08_ThereCanBeMoreThanTwoTeams [
 	| result |
 
@@ -175,7 +176,7 @@ TournamentTest >> test08_ThereCanBeMoreThanTwoTeams [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6' 'Blithering Badgers             |  2 |  1 |  0 |  1 |  3' 'Courageous Californians        |  2 |  0 |  0 |  2 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test09_TypicalInput [
 	| result |
 
@@ -183,7 +184,7 @@ TournamentTest >> test09_TypicalInput [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7' 'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6' 'Blithering Badgers             |  3 |  1 |  0 |  2 |  3' 'Courageous Californians        |  3 |  0 |  1 |  2 |  1' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test10_IncompleteCompetitionnotAllPairsHavePlayed [
 	| result |
 
@@ -191,7 +192,7 @@ TournamentTest >> test10_IncompleteCompetitionnotAllPairsHavePlayed [
 	self assert: result equals: #('Team                           | MP |  W |  D |  L |  P' 'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6' 'Blithering Badgers             |  2 |  1 |  1 |  0 |  4' 'Courageous Californians        |  2 |  0 |  1 |  1 |  1' 'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TournamentTest >> test11_TiesBrokenAlphabetically [
 	| result |
 

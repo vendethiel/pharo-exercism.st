@@ -1,50 +1,34 @@
-"
-I represent a die. I can have different faces number and roll. 
-
-"
 Class {
-	#name : #Die,
-	#superclass : #Object,
+	#name : 'Die',
+	#superclass : 'Object',
 	#instVars : [
 		'faces'
 	],
-	#category : #'Exercise@Die'
+	#category : 'Exercise@Die',
+	#package : 'Exercise@Die'
 }
 
-{ #category : #'instance creation' }
-Die class >> withFaces: anInteger [ 
-	^ self new faces: anInteger ; yourself
+{ #category : 'instance initialization' }
+Die class >> withFaces: faces [
+	^ self new faces: faces
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> faces [
-
 	^ faces
 ]
 
-{ #category : #accessing }
-Die >> faces: aNumber [ 
-
-	faces := aNumber
+{ #category : 'accessing' }
+Die >> faces: anInteger [ 
+	faces := anInteger
 ]
 
-{ #category : #initialization }
+{ #category : 'accessing' }
 Die >> initialize [
-	super initialize.
 	faces := 6
 ]
 
-{ #category : #printing }
-Die >> printOn: aStream [
-	super printOn: aStream.
-	aStream nextPutAll: ' ('.
-	aStream print: faces. 
-	aStream nextPutAll: ')'
-
-]
-
-{ #category : #rolling }
-Die >> roll [ 
-
-	^ faces atRandom 
+{ #category : 'random' }
+Die >> roll [
+	^ (1 to: faces) atRandom
 ]
