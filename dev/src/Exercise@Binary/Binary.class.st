@@ -1,6 +1,3 @@
-"
-Binary to decimal
-"
 Class {
 	#name : 'Binary',
 	#superclass : 'Object',
@@ -8,7 +5,7 @@ Class {
 	#package : 'Exercise@Binary'
 }
 
-{ #category : 'tests - binary' }
+{ #category : 'mathematical functions' }
 Binary >> decimalFromBinary: s [ 
 	^ ((s reversed asArray) withIndexCollect: [ :l :i |
 		l isBinaryCharacter ifFalse: [ ^ nil ].
